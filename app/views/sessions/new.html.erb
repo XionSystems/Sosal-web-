@@ -1,0 +1,26 @@
+<div class="home">
+	<div class="sign_in_and_information">
+		<h2>[<em>Inset Some Greeting</em>]</h2>
+		<div class="session_form">
+		
+		<%= form_for(:session, :url => sessions_path, :method => 'post')  do |f| %>
+		<div class="session_fields">
+			<%= f.text_field :email, :placeholder => "Email" %>
+		</div>
+		<%= check_box_tag :remember_me, 1, params[:remember_me] %>
+		<%= label_tag :remember_me %><br \>
+		<div class="session_fields">
+			<%= f.password_field :password, :placeholder => "Password" %>
+		</div>
+		<em><%= link_to "(forgot?)", '#', :id => "forgot" %></em>
+		<br \><br \>
+		<div class="action">
+			<%= f.submit "Sign In", :class=> 'big button'%>
+		</div>
+		<% end %>
+		</div>
+		<div id="session_new_user">
+			<p>Don't have an account? <%= link_to "Click here", new_user_path %> to sign up.</p>
+		</div>
+	</div>
+</div>

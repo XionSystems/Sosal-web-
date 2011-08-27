@@ -1,0 +1,190 @@
+<div class="user_show">
+	
+	<div class="user_nav">
+		<div class="profile_pic">
+			<%= link_to	default_photo, user_path(@user) %>
+		</div>
+	    <div class="edit_profile_pic">
+			<%= link_to "Edit", '#' %>
+		</div>
+		
+		<div class="user_stats">
+		<% if current_user?(@user) %>
+			<u>Welcome!</u>: <%= link_to "#{@user.name}", user_path(@user) %>
+		<% else %>
+		<% if current_user.following?(@user) %>
+			<%= render "unfollow" %> 
+		<% else %>
+			<%= render "follow" %> 
+		<% end %>
+		<% end %>
+		
+		</div>
+		<div class="quick_links">
+			<ul>
+				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
+			</ul>
+			<script type="text/javascript" charset="uft8" >
+				$(document).ready(function(){
+					$(".quick_links_li").hover(function(){
+						$(this).css({
+							"background-color":"#F5F5F5",
+							"cursor":"pointer"
+						});
+					}, function(){
+						var resetCSS = {
+							"background-color":"",
+							"cursor":""
+						}
+						$(this).css(resetCSS);
+					});
+				});
+				
+				$(document).ready(function(){
+					$(".profile_pic").hover(function(){
+						$(".edit_profile_pic").css({
+							"display":"block"
+						});
+					}, function(){
+						var resetEdit = {
+							"display":"none"
+						}
+						$(".edit_profile_pic").css(resetEdit);
+					});
+				});
+			</script>
+		</div>
+		
+	<div class="user_bar">
+			<%= render 'shared/user_bar_nav' %>
+		</div>
+		<div class="portfolio">
+			<div class="album_buttons">
+				<ul>
+					<% if current_user?(@user) %>
+					<li><%= link_to "New Album", '#', :id => "blurt_button" %></li>
+					<li><%= link_to "New Video", '#', :class => "home_edit_buttons" %></li>
+					<% else %>
+					<li><%= link_to "Searches", '#', :class => "home_edit_buttons" %></li>
+					<li><%= link_to "Message", '#', :class => "home_edit_buttons" %></li>
+					<% end %>
+					
+				</ul>
+				<script type="text/javascript" charset="utf8">
+					$(document).ready(function(){
+						$("#blurt_button").hover(function(){
+							$(this).css({"text-decoration":"underline"});
+						}, function(){
+							var resetUnderln = { "text-decoration":"none"}
+							$(this).css(resetUnderln);
+						});
+					});
+				</script>
+			<h3 id ="album_title"><%= @user.username %>'s Albums</h3>
+			<hr id ="line_one" \>
+		</div>
+		<div class="portfolio_albums">
+			<% unless @portfolio.empty? %>
+			<ul>
+				<% @portfolio.each do |album| %>
+					<li><%= image_tag album.photo.url(:standard) %></li>
+				<% end %>
+			</ul>
+			<%= will_paginate @portfolio %>
+			<% end %>
+			<script type ="text/javascript" charset="utf8">
+				$(document).ready(function(){
+					$(".portfolio_albums li").sortable();
+					$(".portfolio_albums li").disableSelection();
+				});
+			</script>
+		</div>
+	</div>
+	<div class="popupPicture">
+		<a class="popupContactClose">[close]</a>
+
+		<p class="contactArea">
+			<br/><br/>
+			<div class="new_picture">
+				<div class="album_create">
+					<h2>[<em>Insert Album</em>]</h2>
+				<div id="new_album">
+					<%= form_for(@album, :html => { :multipart => true }, :validate => true) do |f| %>
+					<div class="session_fields">
+						<%= f.text_field :name, :placeholder => "Album Name" %>
+					</div><br \>
+						<%= f.file_field :photo %><br \><br \>
+						<%= f.submit "Create!", :class => 'big button'%>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		</p>
+	</div>
+	<div class="backgroundPopup"></div>
+
+	</div>
+	<script type="text/javascript" charset="utf8"> 
+	var popupStatus = 0;
+
+	function loadPopup(){
+	if(popupStatus==0){
+		$(".backgroundPopup").css({
+			"opacity": "0.7"
+		});
+		$(".backgroundPopup").fadeIn("fast");
+		$(".popupPicture").fadeIn("fast");
+		popupStatus = 1;
+		}
+	}
+
+	function disablePopup(){
+	if(popupStatus==1){
+		$(".backgroundPopup").fadeOut("slow");
+		$(".popupPicture").fadeOut("slow");
+		popupStatus = 0;
+		}
+	}
+
+	function centerPopup(){
+		var windowWidth = document.documentElement.clientWidth;
+		var windowHeight = document.documentElement.clientHeight;
+		var popupHeight = $(".popupPicture").height();
+		var popupWidth = $(".popupPicture").width();
+		$(".popupPicture").css({
+			"position": "absolute",
+			"top": windowHeight/2-popupHeight/2,
+			"left": windowWidth/2-popupWidth/2
+		});
+
+		$(".backgroundPopup").css({
+			"height": windowHeight
+		});
+
+	}
+
+	$(document).ready(function(){
+		$("#blurt_button").click(function(){
+			centerPopup();
+			loadPopup();
+		});
+
+		$(".popupContactClose").click(function(){
+			disablePopup();
+		});
+
+		$(".backgroundPopup").click(function(){
+			disablePopup();
+		});
+
+		$(document).keypress(function(e){
+			if(e.keyCode==27 && popupStatus==1){
+				disablePopup();
+			}
+		});
+
+	});
+	</script>
+</div>

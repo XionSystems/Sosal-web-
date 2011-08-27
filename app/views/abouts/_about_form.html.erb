@@ -1,0 +1,26 @@
+<div class="home">
+	<div class="edit_user_profile">
+		<%= form_for ([@user, @about]) do |f| %>
+			<div class="session_fields">
+			<%= f.text_field :moto, :placeholder => "Your Moto" %>
+			</div><br \>
+			<div class="session_fields">
+			<%= f.text_field :occupation, :placeholder => "Your Current Occupation" %>
+			</div><br \>
+			<div class="session_fields">
+			<%= f.text_field :home_town, :placeholder => "Where You're From" %>
+			</div><br \>
+			<div class="session_fields">
+			<%= f.text_field :current_town, :placeholder => "Where You Currently Live" %>
+			</div><br \>
+			<%= select("get", "about", @type, {:prompt => "Type"}) %>
+			<%= select("get", "about", @gender, {:prompt => "Gender"}) %>
+			<%= select("get", "about", @relationship, {:prompt => "Relationship"}) %>
+			<%= f.submit "Update!", :class => "create_buttons" %>
+		<% end %>
+	</div>
+	<div class="edit_profile_info">
+		<h3><%= link_to "What are types?", '#' %></h3>
+		<h3><%= link_to "Who can see my info?", '#' %></h3>
+	</div>
+</div>
