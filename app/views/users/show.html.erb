@@ -80,13 +80,33 @@
 					<div class="status_panel">
 						<h3>[<em>Status</em>]</h3>
 						<%= form_for(@status) do |f| %>
-							<%= f.text_area :content %>
+							<%= f.text_area :content, :class=> "count_box" %>
 							<br />
 						<div class="status_submit">	<%= f.submit "Post!", :class => 'button'%></div>
-						<% end%>
+						<% end %>
+						<div class="running_count">Words: 400</div>
+						<script>
+							$(document).ready(function(){
+								$(".count_box").keyup(function(){
+									var box=$(this).val();
+									var count= 400 - box.length;
+
+									if(box.length <= 400){
+										$('.running_count').html("Words: " + count);
+									}
+									else
+									{
+										alert('Full');
+									}
+									return false;
+								});
+
+						});
+						</script>
 					</div>
 					<div id="status_count_show">
-						Updates:<br \><%= @user.statuses.count %>
+				<%= link_to "Feed count:", '#' %> <%= @user.statuses.count %><br \>
+				<%= link_to "Searches:", '#' %> 0
 					</div>
 					<% unless @feed_items.empty? %>
 						<% @feed_items.each do |feed_item|%>
@@ -103,12 +123,6 @@
 								</span>
 							</li>
 						</ul>
-						<script>
-							$(document).ready(function(){
-								$(".personal_feed li:odd").addClass('feed_odd');
-								$(".personal_feed li:even").addClass('feed_even');
-							});
-						</script>
 						<% end %>
 					<% end %>
 				</div>

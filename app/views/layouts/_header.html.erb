@@ -2,15 +2,17 @@
 <div class="left_header">
 	<%= link_to logo, root_path %>
 </div>
+<%= render 'layouts/search_bar' %>
 <div class ="right_header">
 	<div class="right_nav">
 		<ul>
 			<% if signed_in? %>
 			<li><%= link_to "[Dash]", root_path %></li>
+			<li><%= link_to "[Storage]", storage_path(current_user) %></li>
 			<% else %>
 			<li><%= link_to "[Home]", root_path %></li>
+			<li><%= link_to "[Storage]", storage_info_path %></li>
 			<% end %>
-			<li><%= link_to "[Storage]", '#' %></li>
 			<li><%= link_to "[Theatre]", '#' %></li>
 			<li><%= link_to "[Search]", '#' %></li>
 			<% if signed_in? %>
@@ -20,5 +22,6 @@
 			<% end %>
 		</ul>
 	</div>
+</div>
 </div>
 </header>

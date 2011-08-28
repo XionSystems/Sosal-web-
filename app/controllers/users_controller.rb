@@ -27,10 +27,13 @@ class UsersController < ApplicationController
         @title = "#{@user.username}'s Profile"
         @pictures = @user.albums
         @status = Status.new
-        @feed_items = current_user.personal_feed.paginate(:page => params[:page])
+        @feed_items = @user.personal_feed.paginate(:page => params[:page])
+        @search = User.find(:all).map(&:name).to_json
     end
     
     def index
+        @title = "Everybody"
+        @users = User.search(params[:search])
     end
     
     def edit

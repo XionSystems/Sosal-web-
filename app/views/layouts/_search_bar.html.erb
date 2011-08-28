@@ -1,0 +1,15 @@
+<div class="Search">
+<% form_tag users_path, :method => 'get' do %>
+<p>
+<%= text_field_tag :search, params[:search], :placeholder => "Find People..." %>
+<%= submit_tag "Search", :class => "button", :name => nil %>
+</p>
+<% end %>
+<script>
+	$(document).ready(function(){
+		var searchIn = <%= raw @search %>;
+		$("#search").autocomplete({
+			source: searchIn
+		});
+	});
+</script>

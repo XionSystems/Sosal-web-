@@ -70,4 +70,12 @@ class User < ActiveRecord::Base
     def unfollow!(followed)
        relationships.find_by_followed_id(followed).destroy
     end
+    
+    def self.search(search)
+      if search
+        find(:all, :conditions => ['username || name LIKE ?', "%#{search}%"])
+      else
+        find(:all)
+      end
+    end
 end

@@ -12,6 +12,7 @@ Sosal::Application.routes.draw do
         resources :abouts
     end
     
+    resources :storages
     resources :statuses
     resources :profiles
     resources :relationships, :only => [:create, :destroy]
@@ -29,6 +30,8 @@ Sosal::Application.routes.draw do
         root :to => :home
         
         match '/welcome' => :welcome 
+        
+        match '/storage_info' => :storage_info
         
         match '/about' => :about
         

@@ -6,6 +6,9 @@ class PagesController < ApplicationController
         end
     end
     
+    def storage_info
+    end
+    
     def about
     end
     

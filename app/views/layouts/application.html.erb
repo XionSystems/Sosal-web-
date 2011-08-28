@@ -13,16 +13,17 @@
 
   <body>
 	<div class= "container">
-	 <%= render 'layouts/header' %>
 	
+	 <%= render 'layouts/header' %>
+	 
 	 <div class= "wrapper">
-		<% flash.each do |key, value| %>
+	
+	<% flash.each do |key, value| %>
 			<%= content_tag(:div, value, :class => "flash #{key}" )%>
 		<% end %>
 		
 		<%= yield %>
 	 </div>
-	
      <%= render 'layouts/footer' %>
 	 
 	</div>

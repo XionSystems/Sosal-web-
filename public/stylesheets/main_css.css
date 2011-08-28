@@ -23,8 +23,8 @@ header{
 }
 .right_nav{
 	position:relative;
-    top:-55px;
-	left:390px;
+    top:-40px;
+	left:440px;
 	width:500px;
 	margin:auto;
 }
@@ -42,6 +42,16 @@ header{
 }
 .right_nav a:hover{
 	font-weight:bold;
+}
+.Search{
+	position:relative;
+	left:200px;
+	width:600px;
+	z-index:100;
+	bottom:3.5em;
+}
+#search{
+	width:300px;
 }
 .wrapper{
 	background-image:url('PaleBackground.gif');
@@ -581,11 +591,12 @@ div.scrollableArea *{
 .status_panel textarea{
 	position:relative;
 	left:10px;
-	height:4em;
+	height:2em;
 	width:450px;
 }
 .status_submit{
-	
+	position:relative;
+	left:22em;
 }
 .personal_feed{
 	position:relative;
@@ -605,16 +616,25 @@ div.scrollableArea *{
 .personal_feed a:hover{
 	text-decoration:underline;
 }
-.feed_even{
-	background-color:white;
-	width:630px;
-	padding:10px;
+.personal_feed span.timestamp{
+	font-size:14px;
 }
-.feed_odd{
-	background-color:#F0F0F0;
-	width:630px;
-	padding:10px;
+#status_count_show{
+	position:relative;
+	left:30em;
+	bottom:8em;
 }
+#status_count_show a{
+	color:blue;
+}
+.running_count{
+	position:relative;
+	font-weight:bold;
+	margin:auto;
+	left:275px;
+	bottom:28px;
+}
+
 /* For the User Side Nav Bar */
 
 .profile_pic{

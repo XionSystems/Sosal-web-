@@ -6,8 +6,10 @@ class StatusesController < ApplicationController
       @status = current_user.statuses.build(params[:status])
       if !@status.content.empty?
         @status.save
-        flash[:success] = "Posted"
-        redirect_to current_user
+        respond_to do |format|
+            format.html
+            format.js
+        end
       else
         @feed_items = [ ]
         render 'pages/home'
