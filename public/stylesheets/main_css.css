@@ -21,26 +21,33 @@ header{
 	width:100%;
 	margin:auto;
 }
-.right_nav{
+.right_nav_a{
+	position:relative;
+    top:-55px;
+	left:380px;
+	width:500px;
+	margin:auto;
+}
+.right_nav_b{
 	position:relative;
     top:-40px;
 	left:440px;
 	width:500px;
 	margin:auto;
 }
-.right_nav ul{
+.right_nav_a ul, .right_nav_b ul{
 	font-size:15px;
 }
-.right_nav li{
+.right_nav_a li, .right_nav_b li{
 	display:inline;
 	padding:4px;
 }
-.right_nav a{
+.right_nav_a a, .right_nav_b a{
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 	color:white;
 	text-decoration:none;
 }
-.right_nav a:hover{
+.right_nav_a a:hover, .right_nav_b a:hover{
 	font-weight:bold;
 }
 .Search{

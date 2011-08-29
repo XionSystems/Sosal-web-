@@ -27,35 +27,6 @@
 				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
 				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
 			</ul>
-			<script type="text/javascript" charset="uft8" >
-				$(document).ready(function(){
-					$(".quick_links_li").hover(function(){
-						$(this).css({
-							"background-color":"#F5F5F5",
-							"cursor":"pointer"
-						});
-					}, function(){
-						var resetCSS = {
-							"background-color":"",
-							"cursor":""
-						}
-						$(this).css(resetCSS);
-					});
-				});
-				
-				$(document).ready(function(){
-					$(".profile_pic").hover(function(){
-						$(".edit_profile_pic").css({
-							"display":"block"
-						});
-					}, function(){
-						var resetEdit = {
-							"display":"none"
-						}
-						$(".edit_profile_pic").css(resetEdit);
-					});
-				});
-			</script>
 		</div>
 		
 	<div class="user_bar">
@@ -63,11 +34,6 @@
 		</div>
 	</div>
 	<div class="the_user_panel">
-		<script>
-		$(function() {
-			$( "#tabs_user" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
-		});
-		</script>
 
 		<div id="tabs_user">
 			
@@ -78,31 +44,13 @@
 			<div id="tab-1">
 				<div class="usershow_status">
 					<div class="status_panel">
-						<h3>[<em>Status</em>]</h3>
-						<%= form_for(@status) do |f| %>
+						<h3>[<em>Inset Status</em>]</h3>
+						<%= form_for(@status, :remote => true) do |f| %>
 							<%= f.text_area :content, :class=> "count_box" %>
 							<br />
 						<div class="status_submit">	<%= f.submit "Post!", :class => 'button'%></div>
 						<% end %>
 						<div class="running_count">Words: 400</div>
-						<script>
-							$(document).ready(function(){
-								$(".count_box").keyup(function(){
-									var box=$(this).val();
-									var count= 400 - box.length;
-
-									if(box.length <= 400){
-										$('.running_count').html("Words: " + count);
-									}
-									else
-									{
-										alert('Full');
-									}
-									return false;
-								});
-
-						});
-						</script>
 					</div>
 					<div id="status_count_show">
 				<%= link_to "Feed count:", '#' %> <%= @user.statuses.count %><br \>
