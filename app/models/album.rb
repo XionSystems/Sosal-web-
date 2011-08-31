@@ -13,14 +13,18 @@ class Album < ActiveRecord::Base
     belongs_to :user
     
     accepts_nested_attributes_for :photos,
-        :reject_if => proc { |attributes| attributes.blank? }
+        :reject_if => proc { |attributes| attributes.blank? }, 
+        :allow_destroy => true
     
     has_attached_file :photo, :styles => {:large => "350x350-adaptive-resize",
                                           :standard => "140x140#"},
                                           :processors => [:cropper]
     
     validates :user_id, :presence => true
-    validates :name, :presence => true
+    
+    validates :name, :presence => true,
+                     :length => { :maximum => 36}
+                     
     
     after_update :reprocess_photo, :if => :cropping?
 

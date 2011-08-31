@@ -31,6 +31,11 @@ module ApplicationHelper
         logo = image_tag("Sosal_logo.png", :alt => "Sosal")
     end
     
+    def home_photo
+        home_photo = image_tag("play-button.jpg", :alt => "Play", :size => "340x290", 
+                                :id => "play_button" )
+    end
+    
     # Photo for those without one
     def default_photo
         default_photo = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "180x200")

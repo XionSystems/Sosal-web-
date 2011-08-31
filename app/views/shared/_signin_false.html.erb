@@ -1,28 +1,17 @@
 <div class="home">
-	<div class="home_bubbles">
-		<div class="pitch">
-			<h2>[<em>Insert Something Cool Here</em>]</h2>
-		</div>
-		<div class="bubble_one">
-			<h2><%= link_to "Search", '#' %></h2>
-			<p>The Web for the things you love and have your profile change over time to reflect <u>YOU</u></p>
-		</div>
-		<div class="bubble_two">
-		</div>
-		<div class="bubble_three">
-			<h2><%= link_to "Personalize", '#' %></h2>
-			<p>The Web should adjust to you. Sign up or log in and watch as your profile grows to reflect what you like.</p>
-		</div>
-		<div class="link_to_create">
-			<p>New? <%= link_to "Click here", new_user_path %> to sign up!</p>
-		</div>
+	<div class="home_field">
+	    <h2 class="pitch"><center>[<em>Your web, simplified</em>]</center></h2>
+		<%= link_to home_photo, '#' %>
+		<p id="click_it">Click above to learn more<br \></p>
+		
+		<%= link_to "Create Account!", new_user_path, :class => "big_create_button" %> 
 	</div>
-	<div class="information">
-		<ul>
-			<li><%= link_to "About Us?", '#' %></li>
-			<li><%= link_to "Trending Searches", '#' %></li>
-			<li><%= link_to "Stats and Statistics", '#' %></li>
-		</ul>
+	<div class="bubble_one">
+		<h2><%= link_to "Posts", '#' %></h2>
+		<p>Join the community and post links, ask and answer questions, or just simply talk. Its all up to you.</p>
 	</div>
-	
+	<div class="bubble_two">
+		<h2><%= link_to "Personalize", '#' %></h2>
+		<p>The Web should adjust to you. Sign up or log in and watch as your profile grows to reflect what you like.</p>
+	</div>
 </div>

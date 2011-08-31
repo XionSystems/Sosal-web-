@@ -10,7 +10,7 @@
 #
 class User < ActiveRecord::Base
     attr_accessor :password
-    attr_protected :admin
+    attr_accessible :username, :name, :email, :birthday, :password, :password_confirmation
     has_one :profile, :dependent => :destroy
     has_many :abouts, :dependent => :destroy
     has_many :albums, :dependent => :destroy
@@ -20,12 +20,22 @@ class User < ActiveRecord::Base
                                      :dependent => :destroy
     has_many :following, :through => :relationships, :source => :followed
     has_many :followers, :through => :reverse_relationships, :source => :follower
+    
+    email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
                     
     validates :username, :presence => true
-    validates :name, :presence => true
-    validates :email, :presence => true
+    
+    validates :name, :presence => true, 
+                     :length => { :maximum => 36}
+                     
+    validates :email, :presence => true,
+                      :format => { :with => email_regex },
+                      :uniqueness => { :case_sensitive => false }
+                      
     validates :password, :presence => true, 
-                         :confirmation => true
+                         :confirmation => true,
+                         :length => { :within => 6..36 }
+                         
     validates :birthday, :presence => true
     
     before_save :encrypt_password

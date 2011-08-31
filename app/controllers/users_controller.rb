@@ -8,12 +8,6 @@ class UsersController < ApplicationController
     
     def create
         @user = User.new(params[:user])
-        @user.username = params[:user][:username]
-        @user.name = params[:user][:name]
-        @user.email = params[:user][:email]
-        @user.password = params[:user][:password]
-        @user.password_confirmation = params[:user][:password_confirmation]
-        @user.birthday = params[:user][:birthday]   
         if @user.save
             sign_in @user
             redirect_to root_path
