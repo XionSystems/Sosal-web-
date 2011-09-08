@@ -10,22 +10,27 @@ class PagesController < ApplicationController
         end
     end
     
-    def storage_info
+    def goodby
     end
     
     def about
+        @title = "About Us"
     end
     
     def help
+        @title = "Help, Q&A, and other wikis"
     end
     
     def terms
+        @title = "Terms"
     end
     
     def privacy
+        @title = "Privacy"
     end
     
     def resources
+        @title = "Resources"
     end
     
     def welcome

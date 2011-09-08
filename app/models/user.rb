@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     has_many :storages, :dependent => :destroy
     has_many :locations, :dependent => :destroy
     has_many :statuses, :dependent => :destroy
+    has_many :bookmarks, :dependent => :destroy
     has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
     has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship",
                                      :dependent => :destroy

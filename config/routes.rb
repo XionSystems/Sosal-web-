@@ -13,6 +13,7 @@ Sosal::Application.routes.draw do
     end
     
     resources :storages
+    resources :bookmarks
     resources :storeaccounts
     resources :storeplans
     resources :statuses
@@ -32,11 +33,15 @@ Sosal::Application.routes.draw do
     controller :pages do
         root :to => :home
         
+        match '/goodby' => :goodby
+        
         match '/welcome' => :welcome 
         
         match '/storage_info' => :storage_info
         
         match '/about' => :about
+        
+        match '/help' => :help
         
         match '/terms' => :terms
         

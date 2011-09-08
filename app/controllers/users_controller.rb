@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
     before_filter :authenticate, :only => [:destroy, :portfolio, :show]
+    before_filter :correct_user, :only => [:edit, :update]
+    before_filter :admin_user, :only => [:destroy]
     before_filter :search_user
     
     def new
@@ -22,6 +24,7 @@ class UsersController < ApplicationController
         @title = "#{@user.username}'s Profile"
         @pictures = @user.albums
         @status = Status.new
+        @bookmarks = Bookmark.new
         @feed_items = @user.personal_feed.paginate(:page => params[:page])
     end
     
@@ -76,5 +79,17 @@ class UsersController < ApplicationController
          @user = User.find(params[:id])
          @users = @user.followers.all
          render 'show_follow'
+     end
+     
+     private
+     
+     def correct_user
+       @user = User.find(params[:id])
+       redirect_to(root_path) unless current_user?(@user)
+     end
+
+     def admin_user
+       @user= User.find(params[:id])          
+       redirect_to(root_path) if !current_user.admin? || current_user?(@user)
      end
 end

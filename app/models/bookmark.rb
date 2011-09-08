@@ -11,7 +11,6 @@ class Bookmark < ActiveRecord::Base
      
      validates :user_id, :presence => true
      validates :web_name, :presence => true
-     validates :url, :presence => true,
-                     :format => {:with => /^http:///, :message => "Needs to begin with 'http'."}
+     validates :url, :presence => true
      
 end
