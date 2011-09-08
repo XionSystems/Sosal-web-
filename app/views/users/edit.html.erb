@@ -1,0 +1,12 @@
+<div class="panel">
+	<div class="new_user">
+		<h2>[<em>Update You</em>]</h2>
+		<div class="session_form">
+		<%= form_for(@user, :validate => true) do |f| %>
+		<%= render 'shared/error_explaination', :object => f.object %>
+		<%= render "user_form", :f => f %>
+			<%= f.submit "Update!", :class => "big primary button" %>
+		<% end %>
+		</div>
+	</div>
+</div>

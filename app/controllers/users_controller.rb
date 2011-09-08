@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_filter :authenticate, :only => [:destroy, :portfolio, :show]
+    before_filter :search_user
     
     def new
         @title = "Sign Up"
@@ -22,7 +23,6 @@ class UsersController < ApplicationController
         @pictures = @user.albums
         @status = Status.new
         @feed_items = @user.personal_feed.paginate(:page => params[:page])
-        @search = User.find(:all).map(&:name).to_json
     end
     
     def index

@@ -32,12 +32,19 @@ module ApplicationHelper
     end
     
     def home_photo
-        home_photo = image_tag("play-button.jpg", :alt => "Play", :size => "340x290", 
-                                :id => "play_button" )
+        home_photo = image_tag("home_logo.png", :alt => "Play", :id => "play_button" )
     end
     
     # Photo for those without one
     def default_photo
         default_photo = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "180x200")
+    end
+    
+    def search 
+        User.find(:all).map(&:name).to_json
+    end
+    
+    def search_user
+        @search = search
     end
 end

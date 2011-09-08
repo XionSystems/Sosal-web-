@@ -1,27 +1,29 @@
+<% content_for(:head) do %>
+	<%= javascript_include_tag "jquery.slideShow.js" %>
+<% end %>
 <div class="panel">
+	<div class="not_signed_in_nav">
+		<ul>
+			<li><%= link_to "[Home]", root_path %></li>
+			<li><%= link_to "[Sign In]", signin_path %></li>
+		</ul>
+	</div>
+	<div class="create_user_slideshow">
+		<div id="slideshow">
+		    <img src="/javascripts/Think.png" alt="1" width="450" height="350"/>
+		    <img src="/javascripts/Plan.png" alt="2" width="450" height="350"/>
+			<img src="/javascripts/Build.png" alt="3" width="450" height="350"/>
+		</div>
+		<script type="text/javascript">
+			$.slideShow('#slideshow');
+		</script>
+	</div>
 	<div class="new_user">
 		<h2>[<em>Insert You</em>]</h2>
 		<div class="session_form">
 		<%= form_for(@user, :validate => true) do |f| %>
 		<%= render 'shared/error_explaination', :object => f.object %>
-		<div class="session_fields">
-			<%= f.text_field :username, :placeholder => "Username*" %>
-		</div><br \>
-		<div class="session_fields">
-			<%= f.text_field :name, :placeholder => "Name*" %>
-		</div><br \>
-		<div class="session_fields">
-			<%= f.text_field :email, :placeholder => "Email*" %>
-		</div><br \>
-		<div class="session_fields">
-			<%= f.password_field :password, :placeholder => "Password*" %>
-		</div><br \>
-		<div class="session_fields">
-			<%= f.password_field :password_confirmation, :placeholder => "Confirm*" %>
-		</div><br \>
-		<div class="session_fields">
-			<input class="text" id="user_birthday" name="user[birthday]" placeholder = "Birthday*">
-		</div><br \>
+		<%= render "user_form", :f => f %>
 			<%= f.submit "Sign Up!", :class => "create_buttons" %>
 		<% end %>
 		<div id="agreement">

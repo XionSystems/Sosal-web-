@@ -12,8 +12,12 @@ class User < ActiveRecord::Base
     attr_accessor :password
     attr_accessible :username, :name, :email, :birthday, :password, :password_confirmation
     has_one :profile, :dependent => :destroy
+    has_one :storeaccount
+    has_one :storeplan
     has_many :abouts, :dependent => :destroy
     has_many :albums, :dependent => :destroy
+    has_many :storages, :dependent => :destroy
+    has_many :locations, :dependent => :destroy
     has_many :statuses, :dependent => :destroy
     has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
     has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship",

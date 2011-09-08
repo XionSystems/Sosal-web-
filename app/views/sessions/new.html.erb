@@ -1,5 +1,11 @@
-<div class="home">
-	<div class="sign_in_and_information">
+<div class="session">
+	<div class="sign_in_and_information">	
+		<div class="not_signed_in_nav">
+			<ul>
+				<li><%= link_to "[Create]", new_user_path %></li>
+				<li><%= link_to "[Home]", root_path %></li>
+			</ul>
+		</div>
 		<h2>[<em>Inset Some Greeting</em>]</h2>
 		<div class="session_form">
 		

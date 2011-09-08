@@ -1,3 +1,9 @@
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag "gmaps4rails.css" %>
+<% end %>
+<% content_for(:scripts) do %>
+	<%= javascript_include_tag "gmaps4rails.base.js", "gmaps4rails.googlemaps.js" %>
+<% end %>
 <div class="signed_in_home">
 	
 	<div class="home_bar">
@@ -18,6 +24,40 @@
 			<li><a href="#tabs-4">Aenean lacinia</a></li>
 		</ul>
 		<div id="tabs-1">
+			<div class="user_location">
+				<%= gmaps4rails(@json) %>
+			</div>
+			<div class="map_side_panel">
+				<h2>Get Sosalized!</h2>
+				<ul>
+					<li class="map_links"><%= link_to "Add Place", '#', :id => "add_me" %></li>
+					<li class="map_links"><%= link_to "Find Place", '#' %></li>
+					<li class="map_links"><%= link_to "Write Review", '#' %></li>
+				</ul>
+			</div>
+				<script>
+				$.fx.speeds._default = 1000;
+				$(function() {
+					$( "#addlocal" ).dialog({
+						autoOpen: false,
+						height: 300,
+						width: 350,
+						modal: true
+						
+					});
+					$( "#add_me" ).click(function() {
+						$("#addlocal").dialog( "open" );
+						return false;
+					});
+				});
+				</script>
+				<div id="addlocal" title="Add Your Location!">
+					<%= form_for(@location) do |f| %>
+						<%= f.label :address %>:<%= f.text_field :address %>
+						<br \>
+						<%= f.submit "Add", :class => 'button' %>
+					<% end %>
+				</div>
 		</div>
 		<div id="tabs-2">
 			<p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>

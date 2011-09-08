@@ -1,0 +1,54 @@
+<div class="storeplan_main">
+	<div class="storeplan_stub">
+		<h2><center>[<em>Insert Plan Here</em>]</center></h2>
+		<div class="bubble_one">
+			<h2>Casual</h2>
+			<p>
+				15 GB of storage<br \>
+				Only 8 bucks a month<br \>
+				Perfect for that photos 
+			</p>
+			<%= form_for(@storeplan, @storeplan.total_price = 8, @storeplan.limit = 15, @storeplan.plan_title = "Casual") do |f| %>
+			<%= render "fields", :f => f %>
+			<% end %>
+		</div>
+		<div class="bubble_two">
+			<h2>Sosal</h2>
+				<p>
+					25 GB of storage<br \>
+					Only 12 bucks a month<br \>
+					Perfection for power users
+				</p>
+			<%= form_for(@storeplan, @storeplan.total_price = 12, @storeplan.limit = 25, @storeplan.plan_title = "Sosal") do |f| %>
+			<%= render "fields", :f => f %>
+			<% end %>
+		</div>
+		<div class="bubble_three">
+			<h2>Enterprise</h2>
+				<p>
+					50 GB of storage<br \>
+					Just 30 bucks a month<br \>
+					Perfect for business
+				</p>
+			<%= form_for(@storeplan, @storeplan.total_price = 30, @storeplan.limit = 50, @storeplan.plan_title = "Extreme") do |f| %>
+			<%= render "fields", :f => f %>
+			<% end %>
+		</div>
+	</div>
+	<div class="free_storeplan_stub">
+		<h2><center>[<em>Or Go Free</em>]</center></h2>
+		<ul>
+			<li>5 GB of storage</li>
+			<li>Helps for quick file saves</li>
+		    <li>Kind of like a gift from us to you!</li>
+		</ul>
+	    </p>
+		<%= form_for(@storeplan, @storeplan.total_price = 0, @storeplan.limit = 5, @storeplan.plan_title = "Free") do |f| %>
+		<%= f.hidden_field :total_price %>
+		<%= f.hidden_field :limit %>
+		<%= f.hidden_field :plan_title %>
+		<div id="free_account_button">
+		<%= f.submit "Create A Free Account!", :class => "big primary button" %>
+		<% end %>
+	</div>
+</div> 

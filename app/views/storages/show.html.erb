@@ -1,0 +1,42 @@
+<div class="storage_show">
+	<div id="tabs_storage">
+		<ul>
+			<li><a href="#tab-1">Main</a></li>
+			<li><a href="#tab-2">Files</a></li>
+			<li><a href="#tab-2">Pictures</a></li>
+			<li><a href="#tab-2">Sosal</a></li>
+		</ul>
+		<div id="tab-1">
+			<div class="storage_main">
+				<div id="storage_pitch">
+					<h2>Sosal Stor<em>edge!</em></h2>
+					<p>This is Sosal Storedge, your one stop for all your clouding computing needs. Upload old files, or new photos. Back up a computer or two. Do anything you want, but best of all if you are a Sosal member- you get 5 Gigs free! Click any of the above tabs to learn more.</p>
+				</div>
+				<div class="storage_bar">
+					<div id="storage_lvl">
+					
+					</div>
+					<script>
+						$(function() {
+							$( "#storage_lvl" ).progressbar({
+								value: 50
+							});
+							$("#storage_lvl").css({background: 'blue'});​
+						});
+					</script>
+				<p id="usage_in_words">Usage: 50%</p>
+				<div class="update_storage_lvl">
+					<%= link_to "Upgrade Account", new_storeplan_path(current_user), :class => "big_create_button" %>
+					
+				</div>
+				</div>
+			</div>
+		</div>
+		<div id="tab-2">
+		</div>
+		<div id="tab-3">
+		</div>
+		<div id="tab-4">
+		</div>
+	</div>
+</div>

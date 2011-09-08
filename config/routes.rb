@@ -13,8 +13,11 @@ Sosal::Application.routes.draw do
     end
     
     resources :storages
+    resources :storeaccounts
+    resources :storeplans
     resources :statuses
     resources :profiles
+    resources :locations
     resources :relationships, :only => [:create, :destroy]
     resources :sessions
     

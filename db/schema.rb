@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110827061119) do
+ActiveRecord::Schema.define(:version => 20110908014003) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,29 @@ ActiveRecord::Schema.define(:version => 20110827061119) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+  end
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "web_name"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", :force => true do |t|
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
+    t.string   "address"
+  end
+
+  create_table "order_transactions", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "photos", :force => true do |t|
@@ -80,6 +103,27 @@ ActiveRecord::Schema.define(:version => 20110827061119) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
+  end
+
+  create_table "storeaccounts", :force => true do |t|
+    t.string   "ip_address"
+    t.string   "card_type"
+    t.date     "card_expires_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "storeplan_id"
+  end
+
+  create_table "storeplans", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "plan"
+    t.string   "plan_title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "total_price"
+    t.integer  "limit"
   end
 
   create_table "users", :force => true do |t|

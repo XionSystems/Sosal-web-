@@ -1,17 +1,32 @@
 <div class="home">
 	<div class="home_field">
+		<%= link_to "[Sign In]", signin_path, :id => "homepage_signin_link"%>
+		<div class="third_party_source">
+			<ul>
+				<li><div id="fb-root"></div><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="" send="false" layout="button_count" width="500" show_faces="true" font=""></fb:like></li>
+				<li><g:plusone annotation="none"></g:plusone></li>
+			 </ul>
+		</div>
 	    <h2 class="pitch"><center>[<em>Your web, simplified</em>]</center></h2>
-		<%= link_to home_photo, '#' %>
-		<p id="click_it">Click above to learn more<br \></p>
+		<%= link_to home_photo, '#', :id => "play_button"%>
 		
 		<%= link_to "Create Account!", new_user_path, :class => "big_create_button" %> 
-	</div>
-	<div class="bubble_one">
-		<h2><%= link_to "Posts", '#' %></h2>
-		<p>Join the community and post links, ask and answer questions, or just simply talk. Its all up to you.</p>
-	</div>
-	<div class="bubble_two">
-		<h2><%= link_to "Personalize", '#' %></h2>
-		<p>The Web should adjust to you. Sign up or log in and watch as your profile grows to reflect what you like.</p>
-	</div>
+		
+		<script>
+		$.fx.speeds._default = 1000;
+		$(function() {
+			$( "#dialog" ).dialog({
+				autoOpen: false
+			});
+
+			$( "#play_button" ).click(function() {
+				$( "#dialog" ).dialog( "open" );
+				return false;
+			});
+		});
+		</script>
+		<div id="dialog" title="Welcome!">
+			<p>Hello World!</p>
+		</div>
+	
 </div>

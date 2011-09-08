@@ -13,9 +13,8 @@ class StoragesController < ApplicationController
     end
     
     def show
+        @title = "#{current_user.username}'s Storedge"
+        @storage = current_user.storages
+        @search = @storage.find(:all).map(&:name).to_json
     end
-    
-    def index
-    end
-
 end

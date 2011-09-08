@@ -12,7 +12,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'will_paginate', '~> 3.0'
 gem 'client_side_validations'
-gem ‘gmaps4rails’ 
+gem 'gmaps4rails'
+gem 'activemerchant', :require => 'active_merchant'
 
 # Use unicorn as the web server
 # gem 'unicorn'

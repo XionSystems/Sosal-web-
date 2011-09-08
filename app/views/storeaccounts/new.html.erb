@@ -1,0 +1,82 @@
+<div class="home">
+	<div class="panel">
+	<% form_for(@storeaccount, @storeaccount.ip_address = request.remote_ip, :validate => true) do |f| %>
+    <%= render 'shared/error_explaination', :object => f.object %>
+  	<p>
+    	<%= f.label :card_type %>:<br />
+    	<%= f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]] %>
+   </p>
+   <p>
+    	<%= f.label :first_name %><br />
+		<div class="session_fields">
+    	<%= f.text_field :first_name %>
+		</div>
+  </p>
+  <p>
+    	<%= f.label :last_name %><br />
+		<div class="session_fields">
+    	<%= f.text_field :last_name %>
+		</div>
+  </p>
+   <p>
+    	<%= f.label :card_number, "Credit Card Number:" %><br />
+		<div class="session_fields">
+    	<%= f.text_field :card_number %>
+		</div>
+   </p>
+   <p>
+    	<%= f.label :card_verification, "CVV:" %> <a href="#" class="tip_trigger">What is this?<span class="tip">For MasterCard or Visa, it's the last three digits in the signature area on the back of your card. For American Express, it's the four digits on the front of the card.</span></a><br />
+		<div class="cvv">
+    	<%= f.text_field :card_verification %>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function() {
+		    //Tooltips
+		    var tip;
+				$(".tip_trigger").hover(function(){
+
+					//Caching the tooltip and removing it from container; then appending it to the body
+					tip = $(this).find('.tip').remove();
+					$('body').append(tip);
+
+					tip.show(); //Show tooltip
+
+				}, function() {
+
+					tip.hide().remove(); //Hide and remove tooltip appended to the body
+					$(this).append(tip); //Return the tooltip to its original position
+
+				}).mousemove(function(e) {
+				//console.log(e.pageX)
+					  var mousex = e.pageX + 20; //Get X coodrinates
+					  var mousey = e.pageY + 20; //Get Y coordinates
+					  var tipWidth = tip.width(); //Find width of tooltip
+					  var tipHeight = tip.height(); //Find height of tooltip
+
+					 //Distance of element from the right edge of viewport
+					  var tipVisX = $(window).width() - (mousex + tipWidth);
+					  var tipVisY = $(window).height() - (mousey + tipHeight);
+
+					if ( tipVisX < 20 ) { //If tooltip exceeds the X coordinate of viewport
+						mousex = e.pageX - tipWidth - 20;
+						$(this).find('.tip').css({  top: mousey, left: mousex });
+					} if ( tipVisY < 20 ) { //If tooltip exceeds the Y coordinate of viewport
+						mousey = e.pageY - tipHeight - 20;
+						tip.css({  top: mousey, left: mousex });
+					} else {
+						tip.css({  top: mousey, left: mousex });
+					}
+				});
+		});
+		</script>
+   </p>
+   <p>
+    	<%= f.label :card_expires_on %>:<br />
+        <%= f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true %>
+   </p>
+	<%= f.hidden_field :ip_address %>
+   <p><%= f.submit "Update!", :class => 'big button' %></p>
+<% end %>
+</div>
+</div>
+

@@ -40,6 +40,11 @@ $(function(){
 $(function() {
 		$( "#tabs_user" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
 	});
+
+// Tabs for storage page
+$(function() {
+		$( "#tabs_storage" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
+	});
 // Shows how many characters user has inputed into status textarea
 $(function(){
 			$(".count_box").keyup(function(){

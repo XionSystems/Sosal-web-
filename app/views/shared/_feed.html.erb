@@ -1,0 +1,17 @@
+	<% unless @feed_items.empty? %>
+		<% @feed_items.each do |feed_item|%>
+		<ul class="personal_feed">
+			<li>
+				<span class="user">
+				<%= link_to feed_item.user.username, feed_item.user %>
+				</span><br \>
+				<span class="content">
+				<%= wrap(feed_item.content) %>
+				</span><br \>
+				<span class="timestamp">
+				Posted <%= time_ago_in_words(feed_item.created_at)%> ago.
+				</span>
+			</li>
+		</ul>
+		<% end %>
+	<% end %>

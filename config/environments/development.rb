@@ -22,5 +22,15 @@ Sosal::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  # Sets Active Merchant to test mode for development
+  config.after_initialize do
+    ActiveMerchant::Billing::Base.mode = :test  
+    ::GATEWAY = ActiveMerchant::Billing::PaypalGateway.new(
+          :login => "amissm_1315028084_biz_api1.gmail.com",
+          :password => "1315028121",
+          :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A8VSJ..k9VPc8Dx4putuVkb1H1wi"
+        )
+  end
 end
 
