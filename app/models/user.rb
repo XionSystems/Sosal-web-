@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
     attr_accessor :password
     attr_accessible :username, :name, :email, :birthday, :password, :password_confirmation
     has_one :profile, :dependent => :destroy
-    has_one :storeaccount
     has_one :storeplan
     has_many :abouts, :dependent => :destroy
     has_many :albums, :dependent => :destroy
