@@ -1,0 +1,119 @@
+<div class="user_show">
+
+	
+	<div class="user_nav">
+		<div class="profile_pic">
+			<%= link_to	default_photo, user_path(@user) %>
+		</div>
+	    <div class="edit_profile_pic">
+			<%= link_to "Edit", '#' %>
+		</div>
+		
+		<div class="user_stats">
+		<% if current_user?(@user) %>
+			<u>Welcome!</u>: <%= link_to "#{@user.name}", user_path(@user) %>
+		<% else %>
+			<%= render "unfollow" %>
+		<% end %>
+		
+		</div>
+		<div class="quick_links">
+			<ul>
+				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
+			</ul>
+		</div>
+		
+	<div class="user_bar">
+		<%= render 'shared/user_bar_nav' %>
+		</div>
+	</div>
+	<div class="the_user_panel">
+
+		<div id="tabs_user">
+			
+			<ul>
+				<li><a href="#tab-1">Activity</a></li>
+				<li><a href="#tab-2">Bookmarks</a></li>		
+			</ul>
+			<div id="tab-2">
+				<%= link_to "Add A New Site", '#', :id => "new_bookmark_link", :class => 'big primary button' %>
+				<div id="bookmark_form" title="New Bookmark">
+				<%= form_for(@bookmarks) do |f| %>
+				<span>
+					<%= f.text_field :web_name, :placeholder => "Site Name" %>
+				</span>
+				<span>	
+					<%= f.text_field :url, :placeholder => "Site Url" %>
+				</span>
+				<span>
+					<%= f.text_area  :description, :class => "count_box" %>
+				</span>
+					<%= f.submit "Post!", :class => 'button' %>
+				<% end %>
+				<div class="running_count">Words: 50</div>
+				</div>
+				<script type="text/javascript">
+				$(function() {
+						$( "#bookmark_form" ).dialog({
+							autoOpen: false,
+							height: 350,
+							width: 500
+						});
+
+						$( "#new_bookmark_link" ).click(function() {
+							$( "#bookmark_form" ).dialog( "open" );
+							return false;
+						});
+					});
+				</script>
+				
+				<% unless @favs.empty? %>	
+					<table class="bookmark_table" summary = "Bookmarks">
+						<%= render :partial => 'favs', :collection => @favs %>
+					</table>
+						<%= will_paginate @favs %>
+				<% end %>
+				<script type="text/javascript">
+					$(function() {
+						$( "table.bookmark_table tr" ).sortable();
+						$( "table.bookmark_table tr" ).disableSelection();
+					});
+					</script>
+			</div>
+			<div id="tab-1">
+					<div class="user_show_location">
+						<%= gmaps4rails(@json) %>
+					</div>	
+				<div class="usershow_stats">
+					<h2><u><%= @user.username %>'s Card</u></h2>
+				<div class="edit">
+				<% if current_user?(@user) %>
+					<% if @user.abouts.empty? %>
+						<%= link_to "Edit Profile", new_user_about_path(@user), :class => "edit_profile_button" %>
+					<% else %>
+						<%= link_to "Edit Profile", '#', :class => "edit_profile_button" %>
+					<% end %>
+				<% end %>
+				</div>
+				<% if @user.abouts.empty? %>
+					<center><h2>No Credentials Yet</h2></center>
+				<% else %> 
+					<% @user.abouts.each do |a| %>
+					<ul>
+						<li>From: <%= a.home_town %></li>
+						<li>Lives: <%= a.current_town %></li>
+						<li>Type: <%= a.type %></li>
+						<li>Gender: <%= a.gender %></li>
+						<li>Status: <%= a.relationship %></li>
+						<li>Work: <%= a.occupation %></li>
+						<li>Member Since: <%= (@user.created_at).to_date.to_s(:long) %>
+					</ul>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

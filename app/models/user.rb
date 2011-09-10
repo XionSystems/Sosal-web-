@@ -72,7 +72,19 @@ class User < ActiveRecord::Base
     def personal_feed
       Status.where("user_id = ?", id)
     end
-
+    
+    def bookmark_feed
+        Bookmark.where("user_id = ?", id)
+    end
+    
+    def overall_map
+        Location.from_users_follow_locate(self)
+    end
+    
+    def personal_map
+        Location.where("user_id = ?", id)
+    end
+    
     def following?(followed)
       relationships.find_by_followed_id(followed)
     end

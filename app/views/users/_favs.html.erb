@@ -1,0 +1,41 @@
+<tr>
+	<td class="bookmark_show">
+		<span class="favicon">
+			<script type="text/javascript">
+			$(document).ready(function(){ 
+			  $('a[href^="http://"]').favicons();
+			});
+			</script>
+		</span>
+		<span class="content">
+			<strong><%= link_to favs.web_name, favs.url, :target => "_blank" %></strong>
+		</span>
+		<span class="description">
+			<em><%= favs.description %></em>
+		</span>
+		<br \>	
+		<span class="grab">
+			[Move]<br \>
+			<%= link_to "Preview", '#', :id => "iframe_preview" %>
+			<iframe src="<%= favs.url %>"></iframe>
+					<script type="text/javascript">
+					$(function() {
+							$( "iframe" ).dialog({
+								autoOpen: false,
+								height: 350,
+								width: 500
+							});
+
+							$( "#iframe_preview" ).click(function() {
+								$( "iframe" ).dialog( "open" );
+								return false;
+							});
+						});
+					</script>
+		</span>
+		<span class="timestamp">
+			Added <%= time_ago_in_words(favs.created_at)%> ago.
+		</span>
+	
+	</td>
+</tr>

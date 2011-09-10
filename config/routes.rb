@@ -28,7 +28,7 @@ Sosal::Application.routes.draw do
     
     get '/portfolio/:id', :to => 'users#portfolio', :as => '/portfolio'
     
-    match 'signup', :to => 'users#new'
+    match '/signup', :to => 'users#new'
     
     controller :pages do
         root :to => :home

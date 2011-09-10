@@ -1,0 +1,46 @@
+<div class="user_show">
+	<div class="user_nav">
+		<div class="profile_pic">
+			<%= link_to	default_photo, user_path(@user) %>
+		</div>
+	    <div class="edit_profile_pic">
+			<%= link_to "Edit", '#' %>
+		</div>
+
+		<div class="user_stats">
+			<%= render "follow" %>
+		</div>
+		<div class="quick_links">
+			<ul>
+				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
+			</ul>
+		</div>
+
+	<div class="user_bar">
+		<%= render 'shared/user_bar_nav' %>
+		</div>
+	<div class="not_following_panel">
+		<h2><%= @user.username %></h2>
+		<div class="none_following_creds">
+			<% if @user.abouts.empty? %>
+				<ul>
+					<li>Status: Person doesn't have a status yet</li>
+					<li>Type: Person doesn't have a type yet</li>
+					<li>Member Since: <%= (@user.created_at).to_date.to_s(:long) %></li>
+				</ul>
+			<% else %>
+			<% @user.abouts.each do |a| %>
+			<ul>
+				<li>Status: <%= a.moto %></li>
+				<li>Type: <%= a.type %></li>
+				<li>Member Since: <%= (@user.created_at).to_date.to_s(:long) %></li>
+			</ul>
+			<% end%>
+			<% end %>
+		</div>
+		<p>Follow <strong><%= @user.username %></strong> to learn more about them!</p>
+	</div>
+	</div>
+</div>

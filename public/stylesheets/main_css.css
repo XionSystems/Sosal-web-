@@ -87,6 +87,9 @@ footer span{
 #right_footer a:hover{
 	text-decoration:underline;
 }
+
+/* Home page and goodby page */
+
 .home{
 	min-height:600px;
 	width:100%;
@@ -94,7 +97,7 @@ footer span{
 	top:1em;
 }
 .home_field{
-	height:400px;
+	height:500px;
 	width:95%;
 	margin:auto;
 	position:relative;
@@ -109,20 +112,62 @@ footer span{
 .home_field a:hover{
 	text-decoration:underline;
 }
+.home_page_signin{
+	position:absolute;
+	left:700px;
+	top:10px;
+}
+.home_signin_fields input{
+	width:120px;
+	height:15px;
+}
+#remem_me{
+	position:relative;
+	left:130px;
+	font-size:12px;
+}
+#forgot_home{
+	position:relative;
+	color:blue;
+	text-decoration:none;
+	font-size:12px;
+	bottom:42px;
+}
+.goodby_field{
+	height:500px;
+	width:95%;
+	margin:auto;
+	position:relative;
+	top:2em;
+	background-color:white;
+	border-style:solid;
+	border-width:2px;
+	border-color:silver;
+	-moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+}
 .pitch{
 	position:relative;
 	margin:auto;
-	bottom:70px;
+	bottom:2px;
 	right:11em;
 	color:#A9A9A9;
 	font-size:30px;
 	font-style:500;
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 }
+#information{
+	position:relative;
+	margin:auto;
+	top:75px;
+	left:400px;
+	color:#A9A9A9;
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+}
 #play_button{
 	position:relative;
 	left:180px;
-	bottom:35px;
+	top:30px;
 }
 .big_create_button{
 	margin-left: auto;
@@ -140,7 +185,7 @@ footer span{
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
 	position: relative;
-    bottom:50px;
+    bottom:-120px;
 	left:10px;
 	text-decoration: none;
 	border-style:solid;
@@ -148,16 +193,28 @@ footer span{
 }
 #homepage_signin_link{
 	position:relative;
-	left:950px;
+	left:900px;
 	color:gray;
 }
 .third_party_source{
 	position:relative;
-	left:900px;
+	left:40px;
+	bottom:280px;
 }
-.third_party_source li{
-	display:inline;
-	list-style:none;
+#thrd_2{
+	position:relative;
+	left:6em;
+	bottom:32px;
+}
+#thrd_3{
+	position:relative;
+	left:10em;
+	bottom:70px;
+}
+.action{
+	position:relative;
+	left:265px;
+	bottom:100px;
 }
 
 /* Sign In or User Creation Panel */
@@ -506,20 +563,18 @@ footer span{
 	-moz-border-radius: 15px;
     -webkit-border-radius: 15px;
 }
-.usershow{
+.not_following_panel{
+	height:300px;
+	width:780px;
+	background-color:white;
 	position:relative;
-	bottom:23em;
-	right:20px;
-	display:block;
-	width:750px;
-	height:100px;
-	margin:auto;
-	border-style:inset;
-	border-color:#8B4513;
+	left:290px;
+	bottom:25em;
+	border-style:solid;
+	border-color:silver;
 	border-width:2px;
-	-webkit-box-shadow: 1px 10px 6px gray;
-	-moz-box-shadow: 1px 10px 6px gray;
-	box-shadow: 1px 10px 6px gray;
+	-moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
 }
 .usershow_stats{
 	height:400px;
@@ -547,11 +602,6 @@ footer span{
 	padding:5px;
 	font-size:22px;
 	color:gray;
-}
-div.scrollableArea *{
-	position:relative;
-	display:block;
-	float:left;
 }
 .edit_profile_button{
 	margin-left: auto;
@@ -659,7 +709,63 @@ div.scrollableArea *{
 	left:275px;
 	bottom:28px;
 }
+table.bookmark_table {
+  	margin-top: 1em;
+}
 
+table.bookmark_table tr {
+  	height: 70px;
+}
+table.bookmark_table tr td.bookmark_show {
+	width:800px;
+	background-color:white;
+  	border-top: 1px solid #ccc;
+  	vertical-align: top;
+  	padding-top: 10px;
+}
+
+table.bookmark_table tr td.bookmark_show span.content a {
+  	display: block;
+  	font-size: 110%;
+	width:200px;
+  	color: blue;
+	text-decoration:none;
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+}
+table.bookmark_table tr td.bookmark_show span.content a:hover {
+  	text-decoration:underline;
+}
+table.bookmark_table tr td.bookmark_show span.description {
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size:15px;
+}
+table.bookmark_table tr td.bookmark_show span.timestamp {
+  	display: block;
+  	font-size: 85%;
+  	color: #666;
+}
+table.bookmark_table tr td.bookmark_show span.grab {
+  	position:relative;
+	left:630px;
+	bottom:50px;
+	cursor:move;
+}
+table.bookmark_table tr td.bookmark_show span.grab a {
+  	color:blue;
+	text-decoration:none;
+}
+table.bookmark_table tr td.bookmark_show span.grab a:hover {
+  	text-decoration:underline;
+}
+table.bookmark_table tr td.bookmark_show span.favicon {
+      background: no-repeat;
+      padding-left: 20px;
+      width:20px;
+    }
+#bookmark_form textarea {
+  	height: 4em;
+  	margin-bottom: 0;
+}
 /* For the User Side Nav Bar */
 
 .profile_pic{

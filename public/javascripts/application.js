@@ -49,7 +49,7 @@ $(function() {
 $(function(){
 			$(".count_box").keyup(function(){
 				var box=$(this).val();
-				var count= 400 - box.length;
+				var count= 50 - box.length;
 
 				if(box.length <= 400){
 					$('.running_count').html("Words: " + count);

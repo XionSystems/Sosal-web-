@@ -18,4 +18,14 @@ class Location < ActiveRecord::Base
         address 
     end
     
+    scope :from_users_follow_locate, lambda { |user| follow_locate(user) }
+
+
+    private
+
+    def self.follow_locate(user)
+        following_ids = %(SELECT followed_id FROM relationships WHERE follower_id = :user_id)
+        where("user_id IN (#{following_ids}) OR user_id = :user_id",
+        { :user_id => user})
+    end
 end

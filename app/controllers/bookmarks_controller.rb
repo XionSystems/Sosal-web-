@@ -1,21 +1,27 @@
 class BookmarksController < ApplicationController
     before_filter :authenticate
+    before_filter :authorized_user, :only => :destroy
     
     def create
         @bookmarks = current_user.bookmarks.build(params[:bookmark])
-        if !@bookmarks.content.empty?
+        if !@bookmarks.url.empty?
             @bookmarks.save
-            respond_to do |format|
-                format.html
-                format.js
-            end
+            redirect_to current_user
         else
-            @feed_items = [ ]
+            @favs = [ ]
             render 'pages/home'
-          end 
+        end 
     end
     
     def destroy
+        @bookmarks.destroy
+        redirect_to current_user
     end
-    
+
+    private
+
+    def authorized_user
+        @bookmarks = current_user.bookmarks.find_by_id(params[:id])
+        redirect_to current_user if @bookmarks.nil?
+    end
 end
