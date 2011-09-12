@@ -145,3 +145,9 @@ $(function(){
 		$(".portfolio_albums li").sortable();
 		$(".portfolio_albums li").disableSelection();
 	});
+
+	$(function() {
+	  $("#message_sender_tokens").tokenInput("/messages.json", {
+	    crossDomain: false,
+	  });
+	});

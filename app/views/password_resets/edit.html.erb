@@ -1,0 +1,20 @@
+<div class="session">
+	<div class="reset_password_edit">
+		<div class="not_signed_in_nav">
+				<ul>
+					<li><%= link_to "[Create]", new_user_path %></li>
+					<li><%= link_to "[Home]", root_path %></li>
+				</ul>
+		</div>
+		<%= form_for(@user, :url => password_reset_path(params[:id])) do |f| %>
+  		<%= render 'shared/error_explaination', :object => f.object %>
+  	<div class="session_fields">
+    <%= f.password_field :password, :placeholder => " New Password" %>
+  </div>
+  	<div class="session_fields">
+    <%= f.password_field :password_confirmation, :placeholder => "Confirm" %>
+  </div>
+  <div class="actions"><%= f.submit "Update Password", :class => 'primary button' %></div>
+<% end %>
+</div>
+</div>

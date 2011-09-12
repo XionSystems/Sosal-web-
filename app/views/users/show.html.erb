@@ -1,9 +1,8 @@
 <% content_for(:head) do %>
-	<%= stylesheet_link_tag "gmaps4rails.css", "custom_mapShow.css" %>
-	<script src="https://github.com/christianv/jquery-favicons/raw/master/jquery.favicons.min.js"></script> 
+	<%= stylesheet_link_tag "custom_mapShow.css", "gmaps4rails.css"  %>
 <% end %>
 <% content_for(:scripts) do %>
-	<%= javascript_include_tag "gmaps4rails.base.js", "gmaps4rails.googlemaps.js" %>
+	<%= javascript_include_tag "gmaps4rails.base.js", "gmaps4rails.googlemaps.js", "jquery.favicons.min.js"%>
 <% end %>
 <% if current_user.following?(@user) || current_user?(@user) %>
 	<%= render 'show_true' %>

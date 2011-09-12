@@ -1,0 +1,44 @@
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag "token-input.css" %>
+<% end %>
+<% content_for(:scripts) do %>
+	<%= javascript_include_tag "jquery.tokeninput.js"%>
+<% end %>
+<div class="message_index">
+	<div class="user_nav">
+	
+	<div class="message_index_panel">
+		<h2><%= current_user.username %>'s Messages</h2>
+		<%= link_to "New Message", '#', :id => "new_message_button", :class => 'primary button' %>
+		<div id="new_message" title="New Message">
+			<%= form_for(@new) do |f| %>
+				<%= f.text_field :sender_tokens %>
+				<%= f.text_field :subject %>
+				<%= f.text_area  :content %>
+				<%= f.hidden_field :recip_id %>
+				<%= f.submit "Send", :class => "primary button" %>
+			<% end %>
+		</p>
+			<script type="text/javascript">
+			$(function() {
+					$( "#new_message" ).dialog({
+						autoOpen: false,
+						height: 400,
+						width: 600
+					});
+
+					$( "#new_message_button" ).click(function() {
+						$( "#new_message" ).dialog( "open" );
+						return false;
+					});
+				});
+			</script>
+		<% unless @message_items.empty? %>	
+			<table class="bookmark_table" summary = "Bookmarks">
+				<%= render :partial => 'message_feed_recieved', :collection => @message_items %>
+			</table>
+				<%= will_paginate @favs %>
+		<% end %>
+	</div>
+	</div>
+</div>

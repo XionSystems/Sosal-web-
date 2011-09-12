@@ -1,0 +1,18 @@
+<div class="session">
+	<div class="sign_in_and_information">	
+		<div class="not_signed_in_nav">
+					<ul>
+						<li><%= link_to "[Create]", new_user_path %></li>
+						<li><%= link_to "[Home]", root_path %></li>
+					</ul>
+				</div>
+				<h2>[<em>Redo...</em>]</h2>
+			<%= form_tag password_resets_path, :method => :post do %>
+			<div class="session_fields">
+			    <%= text_field_tag :email, params[:email], :placeholder => "Your Email" %>
+			</div><br \>
+			<div class="actions"><%= submit_tag "Reset Password", :class => "big button" %></div>
+			<% end %>
+		</div>
+	</div>
+</div>

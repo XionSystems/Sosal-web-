@@ -4,6 +4,7 @@
 			<script type="text/javascript">
 			$(document).ready(function(){ 
 			  $('a[href^="http://"]').favicons();
+			  $('a[href^="https://"]').favicons();
 			});
 			</script>
 		</span>
@@ -16,22 +17,29 @@
 		<br \>	
 		<span class="grab">
 			[Move]<br \>
-			<%= link_to "Preview", '#', :id => "iframe_preview" %>
-			<iframe src="<%= favs.url %>"></iframe>
-					<script type="text/javascript">
-					$(function() {
-							$( "iframe" ).dialog({
-								autoOpen: false,
-								height: 350,
-								width: 500
-							});
-
-							$( "#iframe_preview" ).click(function() {
-								$( "iframe" ).dialog( "open" );
-								return false;
-							});
+			<% if current_user?(@user) %>
+				<%= link_to "Share", '#', :class => 'primary button', :id => "share_bookmark" %>
+			<% else %>
+				<%= link_to "Barrow", '#', :class => 'primary button', :id => "barrow_bookmark" %>
+			<% end %>
+				<div id="bookmark_share" title="Bookmarks">
+				
+				</div>
+				</div>
+				<script type="text/javascript">
+				$(function() {
+						$( "#bookmark_share" ).dialog({
+							autoOpen: false,
+							height: 200,
+							width: 500
 						});
-					</script>
+
+						$( "#share_bookmark" ).click(function() {
+							$( "#bookmark_share" ).dialog( "open" );
+							return false;
+						});
+					});
+				</script>
 		</span>
 		<span class="timestamp">
 			Added <%= time_ago_in_words(favs.created_at)%> ago.

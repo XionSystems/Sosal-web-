@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110910012214) do
+ActiveRecord::Schema.define(:version => 20110911055752) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "user_id"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(:version => 20110910012214) do
     t.string   "address"
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "recip_id"
+    t.string   "subject"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "order_transactions", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -86,6 +95,14 @@ ActiveRecord::Schema.define(:version => 20110910012214) do
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "responses", :force => true do |t|
+    t.integer  "message_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "statuses", :force => true do |t|

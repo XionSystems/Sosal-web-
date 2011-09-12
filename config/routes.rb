@@ -12,11 +12,15 @@ Sosal::Application.routes.draw do
         resources :abouts
     end
     
+    resources :messages do
+        resources :responses
+    end
+    
     resources :storages
     resources :bookmarks
     resources :storeaccounts
     resources :storeplans
-    resources :statuses
+    resources :password_resets
     resources :profiles
     resources :locations
     resources :relationships, :only => [:create, :destroy]

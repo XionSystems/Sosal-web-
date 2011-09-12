@@ -102,7 +102,7 @@ footer span{
 	margin:auto;
 	position:relative;
 	top:2em;
-	background-color:white;
+	background-color:#FFFFF8;
 	border-style:solid;
 	border-width:2px;
 	border-color:silver;
@@ -215,6 +215,31 @@ footer span{
 	position:relative;
 	left:265px;
 	bottom:100px;
+}
+
+/* For Misc Pages */
+
+.terms{
+	height:500px;
+	width:800px;
+	font:16px/26px Georgia, Garamond, Serif;
+	overflow:scroll;
+	margin-left:15%;
+}
+
+/* Reset Password */
+
+.reset_password_edit{
+	width:850px;
+	height:600px;
+	background-color:white;
+	margin-left:12%;
+	border-style:solid;
+	border-color:silver;
+	border-width:1px;
+	box-shadow: 5px 5px 5px #888888;
+	-webkit-box-shadow: 5px 5px 5px #888888;
+	
 }
 
 /* Sign In or User Creation Panel */
@@ -566,7 +591,8 @@ footer span{
 .not_following_panel{
 	height:300px;
 	width:780px;
-	background-color:white;
+	background:-moz-linear-gradient(center top , white, #CBF2FF) repeat scroll 0 0 transparent;
+	background:-webkit-gradient(linear, center top , center bottom, from(white), to(#CBF2FF) );
 	position:relative;
 	left:290px;
 	bottom:25em;
@@ -575,6 +601,18 @@ footer span{
 	border-width:2px;
 	-moz-border-radius: 15px;
     -webkit-border-radius: 15px;
+}
+.not_following_panel h2{
+	text-indent:20px;
+	font-weight:bold;
+	color:gray;
+}
+.not_following_panel p{
+	text-indent:20px;
+	color: #666;
+}
+.not_following_creds li{
+	font-size:20px;
 }
 .usershow_stats{
 	height:400px;
@@ -725,6 +763,7 @@ table.bookmark_table tr td.bookmark_show {
 }
 
 table.bookmark_table tr td.bookmark_show span.content a {
+	text-indent:20px;
   	display: block;
   	font-size: 110%;
 	width:200px;
@@ -755,7 +794,7 @@ table.bookmark_table tr td.bookmark_show span.grab a {
 	text-decoration:none;
 }
 table.bookmark_table tr td.bookmark_show span.grab a:hover {
-  	text-decoration:underline;
+	color:white;
 }
 table.bookmark_table tr td.bookmark_show span.favicon {
       background: no-repeat;
@@ -765,6 +804,9 @@ table.bookmark_table tr td.bookmark_show span.favicon {
 #bookmark_form textarea {
   	height: 4em;
   	margin-bottom: 0;
+}
+.favicon{
+	background-repeat:no-repeat;
 }
 /* For the User Side Nav Bar */
 
@@ -1182,5 +1224,29 @@ table.bookmark_table tr td.bookmark_show span.favicon {
 .cvv input{
 	height:3em;
 	width:100px;
+}
+
+/* For Messages */
+
+.message_index{
+	height:800px;
+	width:100%;
+}
+.message_index_panel{
+	position:relative;
+	height:700px;
+	width:800px;
+	background-color:white;
+	left:280px;
+	border-style:dashed;
+	border-width:2px;
+	border-color:silver;
+}
+.message_index_panel h2{
+	text-indent:20px;
+	font-weight:bold;
+	border-bottom-style:dashed;
+	border-bottom-width:2px;
+	border-bottom-color:silver;
 }
 

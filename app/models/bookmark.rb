@@ -17,4 +17,11 @@ class Bookmark < ActiveRecord::Base
                      :format => {:with => bookmark_regex}
      validates :description, :length => {:maximum => 50}
      
+     def self.search_bookmark(search_bookmark)
+         if search_bookmark
+            find(:all, :conditions => ['web_name || url LIKE ?', "%#{search}%"])
+         else
+            find(:all)
+         end
+    end
 end

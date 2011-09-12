@@ -13,6 +13,16 @@ class BookmarksController < ApplicationController
         end 
     end
     
+    def update
+        @user = User.find(params[:id])
+        @bookmarks = @user.bookmarks.find_by_id(params[:id])
+        if @bookmarks.update_attributes
+            redirect_to @user
+        else
+            render @user
+        end
+    end
+            
     def destroy
         @bookmarks.destroy
         redirect_to current_user

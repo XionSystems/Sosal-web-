@@ -24,9 +24,10 @@ class UsersController < ApplicationController
         @title = "#{@user.username}'s Profile"
         @pictures = @user.albums
         @status = Status.new
+        @bookmark = @user.bookmarks.find_by_id(params[:id])
         @bookmarks = Bookmark.new
         @json = @user.personal_map.to_gmaps4rails
-        @favs = @user.bookmark_feed.paginate(:page => params[:page])
+        @favs = @user.bookmark_feed.paginate(:page => params[:page], :per_page => 5)
         @feed_items = @user.personal_feed.paginate(:page => params[:page])
     end
     
