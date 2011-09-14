@@ -11,5 +11,5 @@ class Profile < ActiveRecord::Base
     
     has_attached_file :avatar, :style => {:large => "350x350-adaptive-resize",
                                           :medium => "180x200#",
-                                          :thumb => "32x32#"}
+                                          :thumb => "52x52#"}
 end

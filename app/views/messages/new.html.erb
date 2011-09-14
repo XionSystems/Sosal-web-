@@ -1,0 +1,30 @@
+<% content_for(:head) do %>
+	<%= stylesheet_link_tag "token-input.css" %>
+<% end %>
+<% content_for(:scripts) do %>
+	<%= javascript_include_tag "jquery.tokeninput.js"%>
+<% end %>
+<div class="message_index">
+	<div class="message_nav">
+	<%= render 'show_sidebar' %>
+	<div class="message_index_panel">
+		<h2>Send A New Message!</h2>
+		<div class="new_message">
+				<%= form_for(@new) do |f| %>
+					<div class="session_fields">
+					<%= f.label :sender_tokens, "To:" %>
+					<%= f.text_field :sender_tokens %>
+					</div><br \>
+					<div class="session_fields">
+					<%= f.label :subject %>:<br \>
+					<%= f.text_field :subject %>
+					</div><br \>
+					<%= f.label :content, "Body:" %><br \>
+					<%= f.text_area  :content %>
+					<%= f.hidden_field :recip_id %><br \>
+					<%= f.submit "Send", :class => "primary button" %>
+				<% end %>
+		</div>
+	</div>
+	</div>
+</div>

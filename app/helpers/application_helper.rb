@@ -40,6 +40,10 @@ module ApplicationHelper
         default_photo = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "180x200")
     end
     
+    def default_thumb
+        default_thumb = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "52x52")
+    end
+    
     def search 
         User.find(:all).map(&:name).to_json
     end

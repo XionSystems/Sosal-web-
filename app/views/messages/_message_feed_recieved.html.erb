@@ -1,13 +1,17 @@
-<tr>
-	<td class="messages">
-		<span class="user">
-			<%= link_to message_items.user.username, message_items.user %>
-		</span>
-		<span class="subject">
-			<%= message_items.subject %>
-		</span>
-		<span class="content">
-			<%= message_items.content %>
-		</span>
-	</td>
-</tr>
+			<ul>
+				<li>
+				<span class="user">
+					<%= link_to m.user.username, m.user %>
+				</span>-
+				<span class="subject">
+					<em><%= m.subject %></em>
+				</span>
+				<span class="time">
+					<%= time_ago_in_words(m.created_at) %> ago.
+				</span>
+				<br \>
+				<span class="content">
+					<%= truncate(m.content, :length => 12, :omission => "...") %>
+				</span>
+				</li>
+			</ul>

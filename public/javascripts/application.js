@@ -22,6 +22,22 @@ $(function(){
 		});
 	});
 
+// Same as above, only for links in message pages
+	$(function(){
+			$(".message_option_links li").hover(function(){
+				$(this).css({
+					"background-color":"#F5F5F5",
+					"cursor":"pointer"
+				});
+			}, function(){
+				var resetCSS = {
+					"background-color":"",
+					"cursor":""
+				}
+				$(this).css(resetCSS);
+			});
+		});
+
 // Shows the edit profile pic link 
 $(function(){
 		$(".profile_pic").hover(function(){
@@ -38,12 +54,12 @@ $(function(){
 
 // Tabs for show page
 $(function() {
-		$( "#tabs_user" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
+		$( "#tabs_user" ).tabs()
 	});
 
 // Tabs for storage page
 $(function() {
-		$( "#tabs_storage" ).tabs().find( ".ui-tabs-nav" ).sortable({ axis: "x" });
+		$( "#tabs_storage" ).tabs()
 	});
 // Shows how many characters user has inputed into status textarea
 $(function(){

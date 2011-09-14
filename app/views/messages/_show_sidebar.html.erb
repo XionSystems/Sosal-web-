@@ -1,0 +1,27 @@
+<div class="message_pic">
+	<% if current_user.profile.blank?%>
+		<%= link_to	default_thumb, user_path(current_user) %>
+	<% else %>
+		<%= link_to image_tag current_user.profile.avatar.url(:thumb), user_path(current_user) %>
+	<% end %>
+</div>
+<div class="user_message_belongs_to">
+	<%= link_to "#{current_user.username}", user_path(current_user) %><br \>
+	<%= link_to "Messages Home", message_path(current_user) %>
+</div>
+<div class="search_messages">
+	<% form_tag user_messages_path, :method => 'get' do %>
+	<p>
+	<%= text_field_tag :search, params[:search], :placeholder => "Search Messages..." %>
+	<%= submit_tag "Go!", :class => "go_button", :name => nil %>
+	</p>
+	<% end %>
+</div>
+<%= link_to "Start a Chain", '#', :class => "message_chain_button" %>
+<div class="message_option_links">
+	<ul>
+		<li><%= link_to "Received", '#' %></li>
+		<li><%= link_to "Sent", '#' %></li>
+		<li><%= link_to "New", new_message_path(current_user) %></li>
+	</ul>
+</div>

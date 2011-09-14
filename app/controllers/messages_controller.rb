@@ -1,5 +1,12 @@
 class MessagesController < ApplicationController
+    include MessagesHelper
     before_filter :authenticate
+    
+    def new
+        @title = "New Message"
+        @user = User.where("user_id =?", current_user.id)
+        @new = Message.new 
+    end
     
     def create
         @new = current_user.messages.build(params[:message])
@@ -8,8 +15,8 @@ class MessagesController < ApplicationController
         end
         if !@new.content.empty?
             @user = User.where("name like ?", "%#{params[:q]}%") 
-            tokens = @user.map(&:id).to_json.to_s
-            @user.recip_id = eval(tokens).last
+            @tokens = @user.map(&:id).to_json.to_s
+            @new.recip_id = eval(@tokens).last
             @new.save
             flash[:success] = "Sent"
             redirect_to root_path
@@ -21,8 +28,6 @@ class MessagesController < ApplicationController
     
     def show 
         @title = "Messages"
-        @user = User.where("user_id =?", current_user.id)
-        @new = Message.new
         @message_items = current_user.message_feed.paginate(:page => params[:page])
     end
     
@@ -32,14 +37,8 @@ class MessagesController < ApplicationController
     
     def destroy
     end
-
-    private 
     
-    def search_users
-        @user = User.where("name like ?", "%#{params[:q]}%")
-        respond_to do |format|
-            format.html
-            format.json { render :json => @user.map(&:attributes)}
-        end
+    def user_messages
+        @messages = current_user.message_feed.all
     end
 end

@@ -767,7 +767,7 @@ table.bookmark_table tr td.bookmark_show span.content a {
   	display: block;
   	font-size: 110%;
 	width:200px;
-  	color: blue;
+  	color: #4169E1;
 	text-decoration:none;
 	font-family:"Trebuchet MS", Helvetica, sans-serif;
 }
@@ -1238,6 +1238,7 @@ table.bookmark_table tr td.bookmark_show span.favicon {
 	width:800px;
 	background-color:white;
 	left:280px;
+	bottom:400px;
 	border-style:dashed;
 	border-width:2px;
 	border-color:silver;
@@ -1249,4 +1250,179 @@ table.bookmark_table tr td.bookmark_show span.favicon {
 	border-bottom-width:2px;
 	border-bottom-color:silver;
 }
+#new_message_button{
+	position:relative;
+	left:62em;
+	bottom:50px;
+	
+}
+.new_message{
+	position:relative;
+	height:600px;
+	width:800px;
+	top:20px;
+	left:10px;
+}
+.new_message textarea{
+	height:15em;
+	width:500px;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+}
+.message_pic{
+	position:relative;
+	top:40px;
+	left:20px;
+	width:52px;
+}
+.message_nav{
+	height:800px;
+	width:250px;
+	border-style:solid;
+	border-width:2px;
+	border-color:silver;
+	background-color:white;
+	position:relative;
+	top:-1.5em;
+	right:420px;
+	margin:auto;
+}
+.user_message_belongs_to{
+	position:relative;
+	left:85px;
+}
+.user_message_belongs_to a{
+	font-size:14px;
+	color:#4169E1;
+	text-decoration:none;
+	
+}
+.user_message_belongs_to a:hover{
+	font-style:italic;
+	
+}
+.search_messages{
+	position:relative;
+	top:20px;
+}
+.search_messages input#search{
+	width:170px;
+	height:30px;
+}
+.go_button { 
+    position: relative; 
+    overflow: visible; 
+    display: inline-block; 
+    padding: 0.5em 1em; 
+    border: 1px solid #d4d4d4; 
+    margin: 0;
+    text-decoration: none; 
+    text-shadow: 1px 1px 0 #fff; 
+    font:14px/normal sans-serif; 
+    color: #333; 
+    white-space: nowrap; 
+    cursor: pointer; 
+    outline: none; 
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -webkit-background-clip: padding;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box; 
+    /*background-clip: padding-box;*/ /* commented out due to Opera 11.10 bug */
+    -webkit-border-radius: 20em; 
+    -moz-border-radius: 20em; 
+    border-radius: 20em; 
+    /* IE hacks */
+    zoom: 1; 
+    *display: inline; 
+}
+.go_button:hover,
+.go_button:focus,
+.go_button:active,
+.g_button.active {
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none; 
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3); 
+    color: #fff; 
+    background-color: #3C8DDE;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+.message_chain_button{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	width: 100px;
+	color: #F5F5F5;
+	background:-moz-linear-gradient(center top , #50B7D1, #286DA3) repeat scroll 0 0 transparent;
+	background:-webkit-gradient(linear, center top , center bottom, from(#50B7D1), to(#286DA3) );
+	font-size: 15px;
+	font-weight: bold;
+	padding: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	position: relative;
+	top:30px;
+	right:15px;
+	text-decoration: none;
+	border-style:solid;
+	border-color:silver;
+	border-width:2px;
+	cursor:pointer;
+}
+.message_chain_button:hover{
+	text-decoration:underline;
+}
+.message_option_links li{
+	list-style:none;
+	padding-top:20px;
+	padding-bottom:20px;
+	position:relative;
+	top:50px;
+	right:25px;
+	border-bottom-style:solid;
+	border-bottom-width:2px;
+	border-bottom-color:silver;
+}
+.message_option_links a{
+	color:#4169E1;
+	text-decoration:none;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+.message_center{
+	border-top-style:solid;
+	border-top-width:2px;
+	border-top-color:silver;
+	border-bottom-style:solid;
+	border-bottom-width:2px;
+	border-bottom-color:silver;
+}
+.message_center li{
+	list-style:none;
+}
+.message_center a{
+	color:#4169E1;
+	text-decoration:none;
+}
+.message_center a:hover{
+	text-decoration:underline;
+}
+.message_center ul li span.content{
+	color:#666;
+	font-size:14px;
+}
+.time{
+	position:relative;
+	font-size: 85%;
+  	color: #666;
+	left:460px;
+}
+
 

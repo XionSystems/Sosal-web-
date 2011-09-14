@@ -7,9 +7,13 @@
 class Message < ActiveRecord::Base
     # Sender token used to search for recip_id 
     attr_reader :sender_tokens
-    attr_accessible :subject, :content
+    attr_accessible :subject, :content, :sender_tokens
     belongs_to :user
     has_many :responses
+    
+    accepts_nested_attributes_for :responses,
+           :reject_if => proc { |attributes| attributes.blank? }, 
+           :allow_destroy => true
     
     validates  :user_id, :presence => true
     validates :recip_id, :presence => true

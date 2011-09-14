@@ -23,7 +23,6 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
         @title = "#{@user.username}'s Profile"
         @pictures = @user.albums
-        @status = Status.new
         @bookmark = @user.bookmarks.find_by_id(params[:id])
         @bookmarks = Bookmark.new
         @json = @user.personal_map.to_gmaps4rails

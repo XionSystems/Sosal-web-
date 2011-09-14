@@ -5,6 +5,9 @@ class BookmarksController < ApplicationController
     def create
         @bookmarks = current_user.bookmarks.build(params[:bookmark])
         if !@bookmarks.url.empty?
+            if @bookmarks.web_name.nil?
+                @bookmarks.web_name = "#{@bookmarks.url}"
+            end
             @bookmarks.save
             redirect_to current_user
         else
