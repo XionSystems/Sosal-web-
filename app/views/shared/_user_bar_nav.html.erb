@@ -1,7 +1,7 @@
 	<div id="user_bar_nav">
 		<ul>
 			<li class="top"><%= link_to "Chains", '#' %></li>
-			<li class="top"><%= link_to "Messages 0", message_path(current_user) %></li>	
+			<li class="top"><%= link_to "Messages 0", messages_path(current_user) %></li>	
 			<li class="top"><%= link_to "Albums", portfolio_path(current_user) %></li>
 			<li class="top"><%= link_to "Account", edit_user_path(current_user) %></li>
 		</ul>

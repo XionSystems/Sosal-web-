@@ -1,0 +1,33 @@
+<div class="message_index">
+	<div class="message_nav">
+		<%= render 'messages/show_sidebar' %>
+	<div class="message_index_panel">
+		<h2><%= @message.subject %></h2>
+
+		<div class="message_center">
+			<div class="respond_message_show">
+			<p>
+				<span class="user">
+					<%= link_to @message.user.username, user_path(@message.user) %>
+				</span>
+				<span class="time">
+					<%= time_ago_in_words(@message.created_at) %> ago.
+				</span>
+				<br \>
+				<span class="content">
+					<%= @message.content %>
+				</span>
+			</p>
+				
+			</div>
+			<div class="respond_create">
+				<%= form_for([@message, @response]) do |f| %>
+					<%= f.text_area :content %>
+					<%= f.submit "Send", :class => 'primary button'%>
+				<% end %>
+			</div>
+		
+			</div>
+		</div>
+	</div>
+</div>

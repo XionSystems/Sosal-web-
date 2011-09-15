@@ -12,9 +12,8 @@ Sosal::Application.routes.draw do
         resources :abouts
     end
     
-    resources :messages do
-        resources :responses
-    end
+    resources :messages 
+    resources :responses
     
     get '/user_messages', :to => 'messages#user_messages'
     

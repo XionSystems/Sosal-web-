@@ -146,6 +146,18 @@ footer span{
 	-moz-border-radius: 20px;
     -webkit-border-radius: 20px;
 }
+#smart_phone_pic{
+	position:relative;
+	left:120px;
+}
+.iphone_app{
+	position:relative;
+	bottom:200px;
+	left:650px;
+}
+.iphone_app h1{
+	font-weight:1500;
+}
 .pitch{
 	position:relative;
 	margin:auto;
@@ -1396,16 +1408,19 @@ table.bookmark_table tr td.bookmark_show span.favicon {
 	text-decoration:none;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-.message_center{
+.message_center ul{
+	position:relative;
+	right:25px;
+}
+.message_center li{
+	list-style:none;	
 	border-top-style:solid;
 	border-top-width:2px;
 	border-top-color:silver;
 	border-bottom-style:solid;
 	border-bottom-width:2px;
 	border-bottom-color:silver;
-}
-.message_center li{
-	list-style:none;
+	padding:10px;
 }
 .message_center a{
 	color:#4169E1;
@@ -1424,5 +1439,47 @@ table.bookmark_table tr td.bookmark_show span.favicon {
   	color: #666;
 	left:460px;
 }
+.respond_message_show{
+	height:400px;
+	overflow:scroll;
+}
+.respond_message_show p{
+	position:relative;
+	left:25px;
+}
+.respond_message_show p span.content{
+	color:#666;
+	font-size:14px;
+}
+.respond_create{
+	position:relative;
+	top:40px;
+	left:25px;
+}
+.respond_create textarea{
+	height:5em;
+	width:500px;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	font-size:12px;
+}
+.message_show_panel{
+	position:relative;
+	height:600px;
+	width:800px;
+	background-color:white;
+	left:280px;
+	bottom:400px;
+	border-style:dashed;
+	border-width:2px;
+	border-color:silver;
+}
+.message_show_panel h2{
+	text-indent:20px;
+	font-weight:bold;
+	border-bottom-style:dashed;
+	border-bottom-width:2px;
+	border-bottom-color:silver;
+}
+
 
 

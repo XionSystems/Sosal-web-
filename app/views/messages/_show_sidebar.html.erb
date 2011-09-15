@@ -7,7 +7,7 @@
 </div>
 <div class="user_message_belongs_to">
 	<%= link_to "#{current_user.username}", user_path(current_user) %><br \>
-	<%= link_to "Messages Home", message_path(current_user) %>
+	<%= link_to "Messages Home", messages_path(current_user) %>
 </div>
 <div class="search_messages">
 	<% form_tag user_messages_path, :method => 'get' do %>

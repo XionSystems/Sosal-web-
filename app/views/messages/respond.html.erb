@@ -1,8 +1,8 @@
 <div class="message_index">
 	<div class="message_nav">
 		<%= render 'show_sidebar' %>
-	<div class="message_show_panel">
-		<h2>Subject: <em><%= @message.subject %></em></h2>
+	<div class="message_index_panel">
+		<h2><%= @message.subject %></h2>
 
 		<div class="message_center">
 			<div class="respond_message_show">
@@ -22,28 +22,15 @@
 				<ul>
 					<% @message.responses.each do |r| %>
 					
-						<li>
-								<span class="user">
-									<%= link_to current_user.username, current_user %>
-								</span>
-								<span class="time">
-									<%= time_ago_in_words(r.created_at) %> ago.
-								</span>
-								<br \>
-								<span class="content">
-									<%= r.content %>
-								</span>
-						</li>
+						<li><%= r.content %></li>
 					<% end %>
 				</ul>
 				<% end %>
 					
 			</div>
 			<div class="respond_create">
-				<%= form_for(@response, @response.message_id = @message.id) do |f| %>
-					<%= f.label :content, "Reply:"%><br \>
+				<%= form_for(@response, @response.message_id = @message.id, @response.user_id = current_user.id) do |f| %>
 					<%= f.text_area :content %>
-					<%= f.hidden_field :message_id %>
 					<%= f.submit "Send", :class => 'primary button'%>
 				<% end %>
 			</div>

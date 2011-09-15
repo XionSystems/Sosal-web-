@@ -1,20 +1,7 @@
 <div class="home">
 	<div class="home_field">
 		<div class="home_page_signin">
-			<%= form_for(:session, :url => sessions_path, :method => 'post')  do |f| %>
-			<div class="home_signin_fields">
-				<%= f.text_field :email, :placeholder => "Email" %> <%= f.password_field :password, :placeholder => "Password" %>
-			</div>
-			<div id="remem_me">	
-			<%= check_box_tag :remember_me, 1, params[:remember_me] %>
-			<%= label_tag :remember_me %>
-			</div><br \>
-			<em><%= link_to "(forgot?)", new_password_reset_path, :id => "forgot_home" %></em>
-			<br \><br \>
-			<div class="action">
-				<%= f.submit "Sign In", :class=> 'button'%>
-			</div>
-			<% end %>
+		<%= render 'shared/signin_panel_shared'%>
 		</div>
 		
 		<h2 class="pitch"><center>[<em>Your web, simplified</em>]</center></h2>

@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
             @new.recip_id = eval(@tokens).last
             @new.save
             flash[:success] = "Sent"
-            redirect_to root_path
+            redirect_to messages_path(current_user)
         else
             @message_items = [ ]
             render 'pages/home'
@@ -28,17 +28,20 @@ class MessagesController < ApplicationController
     
     def show 
         @title = "Messages"
-        @message_items = current_user.message_feed.paginate(:page => params[:page])
+        @message = Message.find(params[:id])
+        @response = Response.new
+        @message_items = current_user.message_feed.all
     end
     
     def index
-       search_users
+        @title = "Messages"
+        @message_items = current_user.message_feed.paginate(:page => params[:page])
     end
     
     def destroy
     end
     
     def user_messages
-        @messages = current_user.message_feed.all
+        search_users
     end
 end

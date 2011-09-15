@@ -4,7 +4,7 @@
 # t.string   "content"
 #
 class Response < ActiveRecord::Base
-    attr_accessible :content
+    attr_accessible :content, :message_id
     belongs_to :message
     
     validates :message_id, :presence => true

@@ -163,7 +163,7 @@ $(function(){
 	});
 
 	$(function() {
-	  $("#message_sender_tokens").tokenInput("/messages.json", {
+	  $("#message_sender_tokens").tokenInput("/user_messages.json", {
 	    crossDomain: false,
 	  });
 	});
