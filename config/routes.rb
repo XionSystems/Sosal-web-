@@ -17,6 +17,8 @@ Sosal::Application.routes.draw do
     
     get '/user_messages', :to => 'messages#user_messages'
     
+    match '/auth/:provider/callback' => 'authentications#create'
+    
     resources :storages
     resources :bookmarks
     resources :storeaccounts

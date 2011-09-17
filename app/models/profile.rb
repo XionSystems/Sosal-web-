@@ -9,7 +9,6 @@ class Profile < ActiveRecord::Base
     attr_accessible :avatar, :avatar_attributes
     belongs_to :user
     
-    has_attached_file :avatar, :style => {:large => "350x350-adaptive-resize",
-                                          :medium => "180x200#",
+    has_attached_file :avatar, :styles => {:large => "180x200#",
                                           :thumb => "52x52#"}
 end

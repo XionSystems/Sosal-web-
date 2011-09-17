@@ -1,0 +1,16 @@
+<div class="profile_picture_show">
+	<div class="profile_picture_box">
+		<h2>Edit <%= current_user.username %>'s Profile Pic</h2>
+		<div class="current_pic">
+			<%= default_photo %><br \>
+			<p>Current Profile Picture</p>
+		</div>
+		<div class="add_avatar">
+			<h4>Add Profile Pic:</h4>
+			<p>You may use either PNG or JPG</p>
+			<%= form_for(@avatar, :html => {:multipart => true}) do |f| %>
+				<%= f.file_field :avatar %><br \><br \>
+				<%= f.submit "Save", :class => 'primary button' %>
+			<% end %>
+	</div>
+</div>

@@ -6,6 +6,7 @@
 <div class ="right_header">
 	<div class="right_nav">
 		<ul>
+			<li><%= link_to site_stats, '#', :class => 'pill button icon settings', :id => "stat" %></li>
 			<li><%= link_to "[Dash]", root_path %></li>
 			<li><%= link_to "[Profile]", current_user %></li>
 			<li><%= link_to "[Storedge]", storage_path(current_user) %></li>
@@ -13,6 +14,32 @@
 			<li><%= link_to "[Sign Out]", signout_path %></li>
 		</ul>
 	</div>
+	<div class="advanced_dropdown">
+		<div class="dropdown_pic">
+		<% if current_user.profiles.blank?%>
+			<%= link_to	default_thumb, user_path(current_user) %>
+		<% else %>
+			<% @profile.each do |profile| %>
+			<%= link_to (image_tag profile.avatar.url(:thumb)), user_path(current_user)  %>
+			<% end %>
+		<% end %>
+		</div>
+		<div class="dropdown_stats">
+			<ul>
+				<li><%= link_to "Home", root_path %></li>
+				<li><%= link_to "Profile", current_user %></li>
+			</ul>
+		</div>
+		<div class="dropdown_links">
+		<%= link_to "Messages #{current_user.message_feed.count}", messages_path(current_user) %>
+		<%= link_to "Follow Requests #{current_user.followers.count}", '#' %>
+		</div>
+	</div>
+	<script>
+	$("#stat").click(function(){
+		$(".advanced_dropdown").slideToggle("fast");
+	});
+	</script>
 </div>
 </div>
 </header>

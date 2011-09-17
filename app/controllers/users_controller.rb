@@ -28,11 +28,13 @@ class UsersController < ApplicationController
         @json = @user.personal_map.to_gmaps4rails
         @favs = @user.bookmark_feed.paginate(:page => params[:page], :per_page => 5)
         @feed_items = @user.personal_feed.paginate(:page => params[:page])
+        @profile = Profile.where("user_id = ?", @user.id)
     end
     
     def index
         @title = "Everybody"
         @users = User.search(params[:search])
+        @profile = Profile.where("user_id = ?", current_user.id)
     end
     
     def edit
@@ -66,7 +68,8 @@ class UsersController < ApplicationController
          @user = User.find(params[:id])
          @title = "#{@user.username}'s Portfolio"
          @album = Album.new
-         @portfolio = @user.albums.paginate(:page => params[:page])
+         @portfolio = Album.where("user_id = ?", @user.id).paginate(:page => params[:page])
+         @profile = Profile.where("user_id = ?", @user.id)
      end
      
      def following

@@ -11,10 +11,11 @@
 class User < ActiveRecord::Base
     attr_accessor :password
     attr_accessible :username, :name, :email, :birthday, :password, :password_confirmation
-    has_one :profile, :dependent => :destroy
+    has_many :profiles, :dependent => :destroy
     has_one :storeplan
     has_many :abouts, :dependent => :destroy
     has_many :albums, :dependent => :destroy
+    has_many :authenticates
     has_many :storages, :dependent => :destroy
     has_many :locations, :dependent => :destroy
     has_many :messages, :dependent => :destroy

@@ -16,8 +16,8 @@
 		</span>
 		<br \>	
 		<span class="grab">
-			[Move]<br \>
 			<% if current_user?(@user) %>
+				[Move]<br \>
 				<%= link_to "Share", '#', :class => 'primary button', :id => "share_bookmark" %>
 			<% else %>
 				<%= link_to "Barrow", '#', :class => 'primary button', :id => "barrow_bookmark" %>

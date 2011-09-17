@@ -51,4 +51,10 @@ module ApplicationHelper
     def search_user
         @search = search
     end
+    
+    def site_stats
+        messages = current_user.message_feed.count
+        followers = current_user.followers.count
+        site_stats = messages + followers
+    end
 end

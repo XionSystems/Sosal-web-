@@ -7,6 +7,8 @@ class PagesController < ApplicationController
             @feed_items = current_user.overall_feed.paginate(:page => params[:page])
             @search = search
             @location = Location.new
+            @authentications = current_user.authenticates
+            @profile = Profile.where("user_id = ?", current_user.id)
         end
     end
     

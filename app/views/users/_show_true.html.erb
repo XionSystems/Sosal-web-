@@ -3,14 +3,16 @@
 	
 	<div class="user_nav">
 		<div class="profile_pic">
-			<% if @user.profile.blank?%>
-				<%= link_to	default_photo, user_path(@user) %>
+			<% if @user.profiles.blank?%>
+				<%= link_to	default_photo, new_profile_path(@user) %>
 			<% else %>
-				<%= link_to image_tag @user.profile.avatar.url(:medium), user_path(@user) %>
+				<% @profile.each do |profile| %>
+				<%= link_to (image_tag profile.avatar.url(:large)), edit_profile_path(@profile)  %>
+				<% end %>
 			<% end %>
 		</div>
 	    <div class="edit_profile_pic">
-			<%= link_to "Edit", '#' %>
+			<%= link_to "Edit", new_profile_path(@user) %>
 		</div>
 		
 		<div class="user_stats">
@@ -23,9 +25,10 @@
 		</div>
 		<div class="quick_links">
 			<ul>
+				<li class="quick_links_li"><%= link_to "Photos", portfolio_path(@user) %></li>
 				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
 				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
-				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
+				<li class="quick_links_li"><%= link_to "Chat", new_profile_path(@user) %></li>
 			</ul>
 		</div>
 		

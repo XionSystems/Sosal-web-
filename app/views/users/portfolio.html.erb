@@ -2,7 +2,13 @@
 	
 	<div class="user_nav">
 		<div class="profile_pic">
-			<%= link_to	default_photo, user_path(@user) %>
+		<% if @user.profiles.blank?%>
+			<%= link_to	default_photo, new_profile_path(@user) %>
+		<% else %>
+			<% @profile.each do |profile| %>
+				<%= link_to (image_tag profile.avatar.url(:large)), edit_profile_path(@profile)  %>
+			<% end %>
+		<% end %>
 		</div>
 	    <div class="edit_profile_pic">
 			<%= link_to "Edit", '#' %>
@@ -22,6 +28,7 @@
 		</div>
 		<div class="quick_links">
 			<ul>
+								<li class="quick_links_li"><%= link_to "Photos", portfolio_path(current_user) %></li>
 				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
 				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
 				<li class="quick_links_li"><%= link_to "Chat", '#' %></li>
@@ -50,7 +57,7 @@
 			<% unless @portfolio.empty? %>
 			<ul>
 				<% @portfolio.each do |album| %>
-					<li><%= image_tag album.photo.url(:standard) %></li>
+					<li><%= link_to (image_tag album.photo.url(:standard)), album_photos_path(album) %></li>
 				<% end %>
 			</ul>
 			<%= will_paginate @portfolio %>

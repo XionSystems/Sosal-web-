@@ -1,8 +1,10 @@
 <div class="message_pic">
-	<% if current_user.profile.blank?%>
-		<%= link_to	default_thumb, user_path(current_user) %>
+	<% if current_user.profiles.blank?%>
+		<%= link_to	default_photo, user_path(current_user) %>
 	<% else %>
-		<%= link_to image_tag current_user.profile.avatar.url(:thumb), user_path(current_user) %>
+		<% @profile.each do |profile| %>
+		<%= link_to (image_tag profile.avatar.url(:thumb)), user_path(current_user)  %>
+		<% end %>
 	<% end %>
 </div>
 <div class="user_message_belongs_to">

@@ -4,8 +4,9 @@ class MessagesController < ApplicationController
     
     def new
         @title = "New Message"
-        @user = User.where("user_id =?", current_user.id)
+        @profile = Profile.where("user_id =?", current_user.id)
         @new = Message.new 
+        
     end
     
     def create
@@ -31,11 +32,13 @@ class MessagesController < ApplicationController
         @message = Message.find(params[:id])
         @response = Response.new
         @message_items = current_user.message_feed.all
+        @profile = Profile.where("user_id =?", current_user.id)
     end
     
     def index
         @title = "Messages"
         @message_items = current_user.message_feed.paginate(:page => params[:page])
+        @profile = Profile.where("user_id =?", current_user.id)
     end
     
     def destroy

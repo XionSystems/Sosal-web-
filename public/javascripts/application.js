@@ -42,11 +42,14 @@ $(function(){
 $(function(){
 		$(".profile_pic").hover(function(){
 			$(".edit_profile_pic").css({
-				"display":"block"
+				"position":"relative",
+				"display":"block",
+				"z-index":"1000"
 			});
 		}, function(){
 			var resetEdit = {
-				"display":"none"
+				"display":"none",
+				"z-index":"1000"
 			}
 			$(".edit_profile_pic").css(resetEdit);
 		});

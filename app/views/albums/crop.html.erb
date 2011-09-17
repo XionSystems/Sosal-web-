@@ -1,33 +1,4 @@
-<% content_for(:head) do %>
-	<%= stylesheet_link_tag "jquery.Jcrop" %>
-	<%= javascript_include_tag "jquery.Jcrop.min" %>
-	<script type="text/javascript" charset="utf-8">
-		$(function(){
-			$('#cropbox').Jcrop({
-				onChange: update_crop,
-				onSelect: update_crop,
-				setSelect: [0, 0, 500, 500],
-				aspectRatio: 1
-			});
-		});
-
-		function update_crop(coords) {
-			var rx = 100/coords.w;
-			var ry = 100/coords.h;
-			$('#preview').css({
-				width: Math.round(rx * <%= @album.photo_geometry(:large).width %>) + 'px',
-				height: Math.round(ry * <%= @album.photo_geometry(:large).height %>) + 'px',
-				marginLeft: '-' + Math.round(rx * coords.x) + 'px',
-				marginTop: '-' + Math.round(ry * coords.y) + 'px'
-			});
-			var ratio = <%= @album.photo_geometry(:original).width %> / <%= 	@album.photo_geometry(:large).width %>;
-			$("#crop_x").val(Math.round(coords.x * ratio));
-			$("#crop_y").val(Math.round(coords.y * ratio));
-			$("#crop_w").val(Math.round(coords.w * ratio));
-			$("#crop_h").val(Math.round(coords.h * ratio));
-		}
-		</script>
-<% end %>
+<%= render 'shared/jcrop_for_crop' %>
 <div class="crop_page">
 	<div class="crop_panel">
 		<center><h2>Move the crop box to adjust the image!</h2></center>
