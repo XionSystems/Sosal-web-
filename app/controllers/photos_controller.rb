@@ -26,7 +26,6 @@ class PhotosController < ApplicationController
     end
     
     def index
-        @profile = Profile.where("user_id = ?", current_user.id)
         @album = Album.find(params[:album_id])
         @photos = @album.photos.paginate(:page => params[:page], :per_page => 24)
         @picture = @album.photos.new

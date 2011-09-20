@@ -2,13 +2,12 @@ class PagesController < ApplicationController
 
     def home
         if signed_in?
-            @title = "#{current_user.username}'s Front Page"
+            @title = "#{current_user.username}/Front Page"
             @json = current_user.overall_map.to_gmaps4rails
             @feed_items = current_user.overall_feed.paginate(:page => params[:page])
             @search = search
             @location = Location.new
-            @authentications = current_user.authenticates
-            @profile = Profile.where("user_id = ?", current_user.id)
+            @authentications = current_user.authenticates if current_user
         end
     end
     

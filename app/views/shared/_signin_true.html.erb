@@ -26,17 +26,7 @@
 		<div id="tabs-1">
 			<div class="user_center">
 				<div id="tbox"></div>
-
-			    <script type="text/javascript">
-					twttr.anywhere(function (T) {
-						T("#tbox").tweetBox({
-							height: 50,
-							width: 400,
-			          		label: "Send a Tweet!"
-					  
-					  });
-				});
-				</script>
+				<%= render 'shared/authentications' %>
 			</div>
 			<div class="user_location">
 				<%= gmaps4rails(@json) %>

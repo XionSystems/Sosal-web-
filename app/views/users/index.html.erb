@@ -1,21 +1,54 @@
 <div class="user_show">
 	<div class="user_nav">
-		<% if current_user.profiles.blank?%>
-			<%= link_to	default_photo, user_path(current_user) %>
-		<% else %>
-			<% @profile.each do |profile| %>
-			<%= link_to (image_tag profile.avatar.url(:thumb)), user_path(current_user)  %>
-			<% end %>
-		<% end %>
+	<%= render 'index_nav_user' %>
 		
-		</div>
+
 <div class="user_index_page">
-<% @users.each do |user| %>
-	<ul>
-		<li>
-			<%= link_to "#{user.username}", user %>
-		</li>
-	</ul>
-<% end %>
-</div>
+	<h2>Find People at Sosal</h2>
+	<div class="index_search_again">
+	<%= render 'layouts/search_bar' %>
+	</div>
+	<table class="index" summary="user index">
+		<% @users.each do |user| %>
+			<tr>
+				<td class="index_show">
+					<span class="picture">
+						<% if user.profiles.blank?%>
+							<%= default_thumb %>
+						<% else %>
+								<% Profile.where("user_id =?", user.id).each do |p| %>
+								<%= image_tag p.avatar.url(:thumb) %>
+								<% end %>
+						<% end %>
+					</span>
+					<span class="content">
+						<strong><%= link_to user.username, user %></strong>
+						<br \>
+						<% if user.type.nil? %>
+						<p>Type: Pending</p>
+						<% else %>
+						<p><%= user.type %>
+						<% end %>
+					</span>
+					<span class="description">
+						<% unless current_user?(user) %>
+						<% if current_user.following?(user) %>
+						<%= form_for(current_user.relationships.find_by_followed_id(user), :html => { :method => :delete }, :remote => true) do |f| %>
+						  <div class="actions"><%= f.submit "Unfollow #{user.username}", :confirm => "Are You Sure?", :class => 'button icon remove' %></div>
+						<% end %>
+						<% else %>
+						<%= form_for(current_user.relationships.build(:followed_id => user.id), :remote => true) do |f| %>
+						  <div><%= f.hidden_field :followed_id %></div>
+						  <div class="actions"><%= f.submit "Follow #{user.username}", :class => 'button icon user' %></div>
+						<% end %>
+						<% end %>
+						<% end %>
+					</span>
+					
+					</span>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	</div>
 </div>

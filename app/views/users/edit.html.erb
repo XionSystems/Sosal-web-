@@ -8,5 +8,8 @@
 			<%= f.submit "Update!", :class => "big primary button" %>
 		<% end %>
 		</div>
+		<div class="destroy_account">
+			<%= link_to "Delete Account", :method => :delete, :confirm => "Are you sure you wish to delete your account and all info?" %>
+		</div>
 	</div>
 </div>

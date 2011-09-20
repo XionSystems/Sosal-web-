@@ -1,0 +1,44 @@
+<div class="stats">	
+	<center>
+	<a href="<%= following_user_path(@user) %>">
+		<span id="following" class="stat">
+			<%= @user.following.count %> following
+		</span>
+	</a>
+	</center>
+	<hr \>
+	<ul>
+		<li class="f_pictures">
+		<% @user.following.limit(9).each do |fo| %>
+			<% if fo.profiles.blank?%>
+				<%= default_thumb %>
+			<% else %>
+				<% Profile.where("user_id =?", fo.id).each do |pone| %>
+					<%= image_tag pone.avatar.url(:thumb) %>
+				<% end %>
+			<% end %>
+		<% end %>
+			</li>
+	</ul>
+	<center>
+	<a href="<%= followers_user_path(@user) %>">
+		<span id ="followers" class="stat">
+			<%= pluralize(@user.followers.count, "follower") %>
+		</span>
+	</a>
+	</center>
+	<hr \>
+	<ul>	
+		<li class="f_pictures">
+		<% @user.followers.limit(9).each do |fr| %>
+			<% if fr.profiles.blank?%>
+				<%= default_thumb %>
+			<% else %>
+				<% Profile.where("user_id =?", fr.id).each do |ptwo| %>
+					<%= image_tag ptwo.avatar.url(:thumb) %>
+				<% end %>
+			<% end %>
+		<% end %>				
+		</li>
+	</ul>
+</div>

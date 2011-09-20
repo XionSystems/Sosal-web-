@@ -2,7 +2,7 @@
 	<%= stylesheet_link_tag "custom_mapShow.css", "gmaps4rails.css"  %>
 <% end %>
 <% content_for(:scripts) do %>
-	<%= javascript_include_tag "gmaps4rails.base.js", "gmaps4rails.googlemaps.js", "jquery.favicons.min.js"%>
+	<%= javascript_include_tag "gmaps4rails.base.js", "gmaps4rails.googlemaps.js"%>
 <% end %>
 <% if current_user.following?(@user) || current_user?(@user) %>
 	<%= render 'show_true' %>

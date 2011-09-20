@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     has_one :storeplan
     has_many :abouts, :dependent => :destroy
     has_many :albums, :dependent => :destroy
-    has_many :authenticates
+    has_many :authenticates, :dependent => :destroy
     has_many :storages, :dependent => :destroy
     has_many :locations, :dependent => :destroy
     has_many :messages, :dependent => :destroy

@@ -2,6 +2,7 @@
 <div class="left_header">
 	<%= link_to logo, root_path %>
 </div>
+<div class="Search">
 <%= render 'layouts/search_bar' %>
 <div class ="right_header">
 	<div class="right_nav">
@@ -19,7 +20,7 @@
 		<% if current_user.profiles.blank?%>
 			<%= link_to	default_thumb, user_path(current_user) %>
 		<% else %>
-			<% @profile.each do |profile| %>
+			<% pro_pic.each do |profile| %>
 			<%= link_to (image_tag profile.avatar.url(:thumb)), user_path(current_user)  %>
 			<% end %>
 		<% end %>

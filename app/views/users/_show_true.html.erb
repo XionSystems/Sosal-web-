@@ -24,13 +24,9 @@
 		
 		</div>
 		<div class="quick_links">
-			<ul>
-				<li class="quick_links_li"><%= link_to "Photos", portfolio_path(@user) %></li>
-				<li class="quick_links_li"><%= link_to "Top Searches", '#' %></li>
-				<li class="quick_links_li"><%= link_to "Find People", '#' %></li>
-				<li class="quick_links_li"><%= link_to "Chat", new_profile_path(@user) %></li>
-			</ul>
+			<%= render 'user_quick_links'%>
 		</div>
+		<%= render 'follow_stats' %>
 		
 	<div class="user_bar">
 		<%= render 'shared/user_bar_nav' %>

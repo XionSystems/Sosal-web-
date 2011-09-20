@@ -37,11 +37,11 @@ module ApplicationHelper
     
     # Photo for those without one
     def default_photo
-        default_photo = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "180x200")
+        default_photo = image_tag("default-avatar.png", :alt => "Photo", :size => "180x200")
     end
     
     def default_thumb
-        default_thumb = image_tag("defualt_pic.jpg", :alt => "Photo", :size => "52x52")
+        default_thumb = image_tag("default-avatar.png", :alt => "Photo", :size => "52x52")
     end
     
     def search 
@@ -56,5 +56,9 @@ module ApplicationHelper
         messages = current_user.message_feed.count
         followers = current_user.followers.count
         site_stats = messages + followers
+    end
+    
+    def pro_pic
+        @pro_pic = Profile.where("user_id = ?", current_user.id)
     end
 end

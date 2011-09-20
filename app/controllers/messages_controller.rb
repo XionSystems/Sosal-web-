@@ -28,15 +28,15 @@ class MessagesController < ApplicationController
     end
     
     def show 
-        @title = "Messages"
         @message = Message.find(params[:id])
+        @title = "#{@message.subject}"
         @response = Response.new
         @message_items = current_user.message_feed.all
         @profile = Profile.where("user_id =?", current_user.id)
     end
     
     def index
-        @title = "Messages"
+        @title = "#{current_user.username}/Messages"
         @message_items = current_user.message_feed.paginate(:page => params[:page])
         @profile = Profile.where("user_id =?", current_user.id)
     end

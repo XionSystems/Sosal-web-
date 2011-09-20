@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     before_filter :authenticate, :only => [:destroy, :portfolio, :show]
     before_filter :correct_user, :only => [:edit, :update]
-    before_filter :admin_user, :only => [:destroy]
+    
     before_filter :search_user
     
     def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
-        @title = "#{@user.username}'s Profile"
+        @title = "#{@user.username}/Profile"
         @pictures = @user.albums
         @bookmark = @user.bookmarks.find_by_id(params[:id])
         @bookmarks = Bookmark.new
@@ -54,19 +54,15 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        user= User.find(params[:id])
-        if current_user?(user)
-            flash[:alert] = "What kind of admin are you?"
-        else
-            user.destroy
-            flash[:notice] = "User Deleted"
-        end
-        redirect_to users_path
+        @user = User.find(params[:id])
+        sign_out
+        @user.destroy
+        flash[:notice] = "Successfully destroyed authentication."
     end
     
      def portfolio
          @user = User.find(params[:id])
-         @title = "#{@user.username}'s Portfolio"
+         @title = "#{@user.username}/Portfolio"
          @album = Album.new
          @portfolio = Album.where("user_id = ?", @user.id).paginate(:page => params[:page])
          @profile = Profile.where("user_id = ?", @user.id)

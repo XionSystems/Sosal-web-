@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916063350) do
+ActiveRecord::Schema.define(:version => 20110920024404) do
 
   create_table "abouts", :force => true do |t|
     t.integer  "user_id"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "photo_updated_at"
   end
 
+  add_index "albums", ["photo_content_type"], :name => "album_contentType"
+  add_index "albums", ["photo_file_name"], :name => "album_fileName"
+  add_index "albums", ["photo_file_size"], :name => "album_fileSize"
+  add_index "albums", ["user_id"], :name => "album_user"
+
   create_table "authenticates", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -52,6 +57,10 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "updated_at"
     t.string   "description"
   end
+
+  add_index "bookmarks", ["url"], :name => "bookmark_url"
+  add_index "bookmarks", ["user_id"], :name => "bookmark_user"
+  add_index "bookmarks", ["web_name"], :name => "bookmark_web_name"
 
   create_table "locations", :force => true do |t|
     t.integer  "user_id"
@@ -72,6 +81,9 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "updated_at"
   end
 
+  add_index "messages", ["recip_id"], :name => "message_recip"
+  add_index "messages", ["user_id"], :name => "message_user"
+
   create_table "order_transactions", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -88,6 +100,11 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "picture_updated_at"
   end
 
+  add_index "photos", ["album_id"], :name => "photo_album"
+  add_index "photos", ["picture_content_type"], :name => "photo_contentType"
+  add_index "photos", ["picture_file_name"], :name => "photo_fileName"
+  add_index "photos", ["picture_file_size"], :name => "photo_fileSize"
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.datetime "created_at"
@@ -98,12 +115,20 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "avatar_updated_at"
   end
 
+  add_index "profiles", ["avatar_content_type"], :name => "profiel_contentType"
+  add_index "profiles", ["avatar_file_name"], :name => "profile_fileName"
+  add_index "profiles", ["avatar_file_size"], :name => "profile_fileSize"
+  add_index "profiles", ["user_id"], :name => "profile_user"
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "relationships", ["followed_id"], :name => "rel_followed"
+  add_index "relationships", ["follower_id"], :name => "rel_followers"
 
   create_table "responses", :force => true do |t|
     t.integer  "message_id"
@@ -112,6 +137,9 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "responses", ["message_id"], :name => "response_message"
+  add_index "responses", ["user_id"], :name => "response_user"
 
   create_table "statuses", :force => true do |t|
     t.integer  "user_id"
@@ -163,6 +191,9 @@ ActiveRecord::Schema.define(:version => 20110916063350) do
     t.string   "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
   end
+
+  add_index "users", ["id"], :name => "user_id_index"
 
 end
